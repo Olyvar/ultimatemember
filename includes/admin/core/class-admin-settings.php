@@ -589,7 +589,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 						),
 						'other' => array(
 							'title'     => __( 'Other', 'ultimate-member' ),
-							'fields'      => array(
+							'fields'	=> array(
 								array(
 									'id'       		=> 'enable_reset_password_limit',
 									'type'     		=> 'checkbox',
@@ -599,7 +599,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 									'id'       		=> 'reset_password_limit_number',
 									'type'     		=> 'text',
 									'label'   		=> __( 'Reset Password Limit','ultimate-member' ),
-									'tooltip' 	=> __('Set the maximum reset password limit. If reached the maximum limit, user will be locked from using this.','ultimate-member'),
+									'tooltip'		=> __('Set the maximum reset password limit. If reached the maximum limit, user will be locked from using this.','ultimate-member'),
 									'validate'		=> 'numeric',
 									'conditional'   => array('enable_reset_password_limit','=',1),
 									'size'          => 'um-small-field',
@@ -608,13 +608,13 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 									'id'       		=> 'blocked_emails',
 									'type'     		=> 'textarea',
 									'label'    		=> __( 'Blocked Email Addresses','ultimate-member' ),
-									'tooltip'	=> __('This will block the specified e-mail addresses from being able to sign up or sign in to your site. To block an entire domain, use something like *@domain.com','ultimate-member'),
+									'tooltip'		=> __('This will block the specified e-mail addresses from being able to sign up or sign in to your site. To block an entire domain, use something like *@domain.com','ultimate-member'),
 								),
 								array(
 									'id'       		=> 'blocked_words',
 									'type'     		=> 'textarea',
 									'label'    		=> __( 'Blacklist Words','ultimate-member' ),
-									'tooltip'	=> __('This option lets you specify blacklist of words to prevent anyone from signing up with such a word as their username','ultimate-member'),
+									'tooltip'		=> __('This option lets you specify blacklist of words to prevent anyone from signing up with such a word as their username','ultimate-member'),
 								)
 							)
 						),
@@ -627,19 +627,19 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 							'id'            => 'admin_email',
 							'type'          => 'text',
 							'label'         => __( 'Admin E-mail Address', 'ultimate-member' ),
-							'tooltip'   => __( 'e.g. admin@companyname.com','ultimate-member' ),
+							'tooltip'   	=> __( 'e.g. admin@companyname.com','ultimate-member' ),
 						),
 						array(
 							'id'            => 'mail_from',
 							'type'          => 'text',
 							'label'         => __( 'Mail appears from','ultimate-member' ),
-							'tooltip' 	=> __( 'e.g. Site Name','ultimate-member' ),
+							'tooltip' 		=> __( 'e.g. Site Name','ultimate-member' ),
 						),
 						array(
 							'id'            => 'mail_from_addr',
 							'type'          => 'text',
 							'label'         => __( 'Mail appears from address','ultimate-member' ),
-							'tooltip'   => __( 'e.g. admin@companyname.com','ultimate-member' ),
+							'tooltip'   	=> __( 'e.g. admin@companyname.com','ultimate-member' ),
 						),
 						array(
 							'id'            => 'email_html',
@@ -659,7 +659,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 									'id'       		=> 'profile_template',
 									'type'     		=> 'select',
 									'label'    		=> __( 'Profile Default Template','ultimate-member' ),
-									'tooltip' 	=> __( 'This will be the default template to output profile','ultimate-member' ),
+									'tooltip' 		=> __( 'This will be the default template to output profile','ultimate-member' ),
 									'default'  		=> um_get_metadefault('profile_template'),
 									'options' 		=> UM()->shortcodes()->get_templates( 'profile' ),
 									'size'          => 'small'
@@ -669,7 +669,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 									'type'     		=> 'text',
 									'label'    		=> __( 'Profile Maximum Width','ultimate-member' ),
 									'default'  		=> um_get_metadefault('profile_max_width'),
-									'tooltip' 	=> 'The maximum width this shortcode can take from the page width',
+									'tooltip' 		=> 'The maximum width this shortcode can take from the page width',
 									'size'          => 'small'
 								),
 
@@ -678,14 +678,14 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 									'type'     		=> 'text',
 									'label'    		=> __( 'Profile Area Maximum Width','ultimate-member' ),
 									'default'  		=> um_get_metadefault('profile_area_max_width'),
-									'tooltip' 	=> __('The maximum width of the profile area inside profile (below profile header)','ultimate-member'),
+									'tooltip' 		=> __('The maximum width of the profile area inside profile (below profile header)','ultimate-member'),
 									'size'          => 'small'
 								),
 								array(
 									'id'       		=> 'profile_icons',
 									'type'     		=> 'select',
 									'label'    		=> __( 'Profile Field Icons' ),
-									'tooltip' 	=> __( 'This is applicable for edit mode only','ultimate-member' ),
+									'tooltip' 		=> __( 'This is applicable for edit mode only','ultimate-member' ),
 									'default'  		=> um_get_metadefault('profile_icons'),
 									'options' 		=> array(
 										'field' 			=> __('Show inside text field','ultimate-member'),
@@ -699,7 +699,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 									'type'     		=> 'text',
 									'label'    		=> __( 'Profile Primary Button Text','ultimate-member' ),
 									'default'  		=> um_get_metadefault('profile_primary_btn_word'),
-									'tooltip' 	=> __('The text that is used for updating profile button','ultimate-member'),
+									'tooltip' 		=> __('The text that is used for updating profile button','ultimate-member'),
 									'size'          => 'medium'
 								),
 								array(
@@ -714,18 +714,18 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 									'type'     		=> 'text',
 									'label'    		=> __( 'Profile Secondary Button Text','ultimate-member' ),
 									'default'  		=> um_get_metadefault('profile_secondary_btn_word'),
-									'tooltip' 	=> __('The text that is used for cancelling update profile button','ultimate-member'),
-									'conditional'		=> array( 'profile_secondary_btn', '=', 1 ),
+									'tooltip' 		=> __('The text that is used for cancelling update profile button','ultimate-member'),
+									'conditional'	=> array( 'profile_secondary_btn', '=', 1 ),
 									'size'          => 'medium'
 								),
 								array(
 									'id'      			=> 'default_avatar',
 									'type'     			=> 'media',
 									'label'    			=> __('Default Profile Photo', 'ultimate-member'),
-									'tooltip'     	=> __('You can change the default profile picture globally here. Please make sure that the photo is 300x300px.', 'ultimate-member'),
+									'tooltip'     		=> __('You can change the default profile picture globally here. Please make sure that the photo is 300x300px.', 'ultimate-member'),
 									'upload_frame_title'=> __('Select Default Profile Photo', 'ultimate-member'),
 									'default'  			=> array(
-										'url'		=> um_url . 'assets/img/default_avatar.jpg',
+										'url'				=> um_url . 'assets/img/default_avatar.jpg',
 									),
 								),
 								array(
@@ -734,15 +734,16 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 									'url'				=> true,
 									'preview'			=> false,
 									'label'    			=> __('Default Cover Photo', 'ultimate-member'),
-									'tooltip'     	=> __('You can change the default cover photo globally here. Please make sure that the default cover is large enough and respects the ratio you are using for cover photos.', 'ultimate-member'),
+									'tooltip'     		=> __('You can change the default cover photo globally here. Please make sure that the default cover is large enough and respects the ratio you are using for cover photos.', 'ultimate-member'),
 									'upload_frame_title'=> __('Select Default Cover Photo', 'ultimate-member'),
 								),
 								array(
 									'id'      		=> 'profile_photosize',
-									'type'     		=> 'text',
+									'type'     		=> 'select',
 									'label'    		=> __( 'Profile Photo Size','ultimate-member' ),
-									'default'  		=> um_get_metadefault('profile_photosize'),
-									'tooltip' 	=> __('The global default of profile photo size. This can be overridden by individual form settings','ultimate-member'),
+									'default'  		=> 'original',
+									'options'       => UM()->files()->get_profile_photo_size( 'photo_thumb_sizes' ),
+									'tooltip' 		=> __('The global default of profile photo size. This can be overridden by individual form settings','ultimate-member'),
 									'size'          => 'small'
 								),
 								array(
@@ -750,13 +751,23 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 									'type'     		=> 'checkbox',
 									'label'    		=> __( 'Profile Cover Photos','ultimate-member' ),
 									'default' 		=> 1,
-									'tooltip' 	=> __('Switch on/off the profile cover photos','ultimate-member'),
+									'tooltip' 		=> __('Switch on/off the profile cover photos','ultimate-member'),
+								),
+								array(
+									'id'      		=> 'profile_coversize',
+									'type'     		=> 'select',
+									'label'    		=> __( 'Profile Cover Size','ultimate-member' ),
+									'default'  		=> 'original',
+									'options'       => UM()->files()->get_profile_photo_size( 'cover_thumb_sizes' ),
+									'tooltip' 		=> __('The global default width of cover photo size. This can be overridden by individual form settings','ultimate-member'),
+									'conditional'	=> array( 'profile_cover_enabled', '=', 1 ),
+									'size'          => 'small'
 								),
 								array(
 									'id'       		=> 'profile_cover_ratio',
 									'type'     		=> 'select',
 									'label'    		=> __( 'Profile Cover Ratio','ultimate-member' ),
-									'tooltip' 	=> __( 'Choose global ratio for cover photos of profiles','ultimate-member' ),
+									'tooltip' 		=> __( 'Choose global ratio for cover photos of profiles','ultimate-member' ),
 									'default'  		=> um_get_metadefault('profile_cover_ratio'),
 									'options' 		=> array(
 										'1.6:1' 			=> '1.6:1',
@@ -764,7 +775,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 										'2.2:1' 			=> '2.2:1',
 										'3.2:1' 			=> '3.2:1',
 									),
-									'conditional'		=> array( 'profile_cover_enabled', '=', 1 ),
+									'conditional'	=> array( 'profile_cover_enabled', '=', 1 ),
 									'size'          => 'small'
 								),
 								array(
@@ -772,42 +783,42 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 									'type'     		=> 'checkbox',
 									'label'    		=> __( 'Profile Header Meta Text Icon','ultimate-member' ),
 									'default' 		=> 0,
-									'tooltip' 	=> __('Display field icons for related user meta fields in header or not','ultimate-member'),
+									'tooltip' 		=> __('Display field icons for related user meta fields in header or not','ultimate-member'),
 								),
 								array(
 									'id'       		=> 'profile_show_name',
 									'type'     		=> 'checkbox',
 									'label'    		=> __( 'Show display name in profile header','ultimate-member' ),
 									'default' 		=> um_get_metadefault('profile_show_name'),
-									'tooltip' 	=> __('Switch on/off the user name on profile header','ultimate-member'),
+									'tooltip'		=> __('Switch on/off the user name on profile header','ultimate-member'),
 								),
 								array(
 									'id'       		=> 'profile_show_social_links',
 									'type'     		=> 'checkbox',
 									'label'    		=> __( 'Show social links in profile header','ultimate-member' ),
 									'default' 		=> um_get_metadefault('profile_show_social_links'),
-									'tooltip' 	=> __('Switch on/off the social links on profile header','ultimate-member'),
+									'tooltip' 		=> __('Switch on/off the social links on profile header','ultimate-member'),
 								),
 								array(
 									'id'       		=> 'profile_show_bio',
 									'type'     		=> 'checkbox',
 									'label'    		=> __( 'Show user description in header','ultimate-member' ),
 									'default' 		=> um_get_metadefault('profile_show_bio'),
-									'tooltip' 	=> __('Switch on/off the user description on profile header','ultimate-member'),
+									'tooltip' 		=> __('Switch on/off the user description on profile header','ultimate-member'),
 								),
 								array(
 									'id'       		=> 'profile_show_html_bio',
 									'type'     		=> 'checkbox',
 									'label'    		=> __( 'Enable html support for user description','ultimate-member' ),
 									'default' 		=> um_get_metadefault('profile_show_html_bio'),
-									'tooltip' 	=> __('Switch on/off to enable/disable support for html tags on user description.','ultimate-member'),
+									'tooltip' 		=> __('Switch on/off to enable/disable support for html tags on user description.','ultimate-member'),
 								),
 								array(
 									'id'       		=> 'profile_bio_maxchars',
 									'type'     		=> 'text',
 									'label'    		=> __( 'User description maximum chars','ultimate-member' ),
 									'default'  		=> um_get_metadefault('profile_bio_maxchars'),
-									'tooltip' 	=> __('Maximum number of characters to allow in user description field in header.','ultimate-member'),
+									'tooltip' 		=> __('Maximum number of characters to allow in user description field in header.','ultimate-member'),
 									'conditional'		=> array( 'profile_show_bio', '=', 1 ),
 									'size'          => 'small'
 								),
@@ -816,7 +827,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 									'type'     		=> 'select',
 									'label'    		=> __( 'Profile Header Menu Position','ultimate-member' ),
 									'default' 		=> um_get_metadefault('profile_header_menu'),
-									'tooltip' 	=> __('For incompatible themes, please make the menu open from left instead of bottom by default.','ultimate-member'),
+									'tooltip' 		=> __('For incompatible themes, please make the menu open from left instead of bottom by default.','ultimate-member'),
 									'options' 		=> array(
 										'bc' 		=> 'Bottom of Icon',
 										'lc' 		=> 'Left of Icon',
@@ -828,15 +839,15 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 									'type'     		=> 'checkbox',
 									'label'    		=> __( 'Show a custom message if profile is empty','ultimate-member' ),
 									'default' 		=> um_get_metadefault('profile_empty_text'),
-									'tooltip' 	=> __('Switch on/off the custom message that appears when the profile is empty','ultimate-member'),
+									'tooltip' 		=> __('Switch on/off the custom message that appears when the profile is empty','ultimate-member'),
 								),
 								array(
 									'id'       		=> 'profile_empty_text_emo',
 									'type'     		=> 'checkbox',
 									'label'    		=> __( 'Show the emoticon','ultimate-member' ),
 									'default' 		=> um_get_metadefault('profile_empty_text_emo'),
-									'tooltip' 	=> __('Switch on/off the emoticon (sad face) that appears above the message','ultimate-member'),
-									'conditional'		=> array( 'profile_empty_text', '=', 1 ),
+									'tooltip' 		=> __('Switch on/off the emoticon (sad face) that appears above the message','ultimate-member'),
+									'conditional'	=> array( 'profile_empty_text', '=', 1 ),
 								)
 							)
 						),

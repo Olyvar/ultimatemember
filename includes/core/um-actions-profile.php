@@ -629,15 +629,42 @@ function um_profile_header_cover_area( $args ) {
 
 				<?php if ( um_user( 'cover_photo' ) ) {
 
-					if ( UM()->mobile()->isMobile() ) {
-						if ( UM()->mobile()->isTablet() ) {
-							echo um_user( 'cover_photo', 1000 );
-						} else {
-							echo um_user( 'cover_photo', 300 );
-						}
+					$get_cover_size = UM()->options()->get( 'profile_coversize' );
+
+					if ( !$get_cover_size || $get_cover_size == 'original' ) {
+						$size = NULL;
 					} else {
-						echo um_user( 'cover_photo', 1000 );
+						$size = $get_cover_size;
 					}
+
+
+					if ( UM()->mobile()->isMobile() ) {
+
+						/**
+						 * UM hook
+						 *
+						 * @type filter
+						 * @title um_mobile_cover_photo
+						 * @description Add size for mobile device
+						 * @input_vars
+						 * [{"var":"$classes","type":"string","desc":"UM Posts Tab query"}]
+						 * @change_log
+						 * ["Since: 2.0"]
+						 * @usage
+						 * <?php add_filter( 'um_mobile_cover_photo', 'change_size', 10, 1 ); ?>
+						 * @example
+						 * <?php
+						 * add_filter( 'um_mobile_cover_photo', 'um_change_cover_mobile_size', 10, 1 );
+						 * function um_change_cover_mobile_size( $size ) {
+						 *     // your code here
+						 *     return $size;
+						 * }
+						 * ?>
+						 */
+						$size = apply_filters( 'um_mobile_cover_photo', $size );
+					}
+
+					echo um_user( 'cover_photo', $size );
 
 				} elseif ( $default_cover && $default_cover['url'] ) {
 

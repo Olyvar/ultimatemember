@@ -1440,6 +1440,25 @@ if ( ! class_exists( 'um\core\Files' ) ) {
 			return '';
 		}
 
+		function get_profile_photo_size ( $type ) {
+			$sizes = UM()->options()->get( $type );
 
+			$sizes = array_combine($sizes, $sizes);
+
+			if ( $type == 'cover_thumb_sizes' ){
+				foreach ( $sizes as $key => $value ){
+					$sizes[ $key ] = $value . 'px';
+				}
+			} else {
+				foreach ( $sizes as $key => $value ){
+					$sizes[ $key ] = $value . 'x' . $value . 'px';
+				}
+			}
+
+
+			$sizes = array( 'original' => 'Original size' ) + $sizes;
+
+			return $sizes;
+		}
 	}
 }
