@@ -647,7 +647,7 @@ function um_profile_header_cover_area( $args ) {
 						 * @title um_mobile_cover_photo
 						 * @description Add size for mobile device
 						 * @input_vars
-						 * [{"var":"$classes","type":"string","desc":"UM Posts Tab query"}]
+                         * [{"var":"$size","type":"int","desc":"Form Arguments"}]
 						 * @change_log
 						 * ["Since: 2.0"]
 						 * @usage
@@ -765,8 +765,21 @@ function um_profile_header( $args ) {
 
 		<div class="um-profile-photo" data-user_id="<?php echo um_profile_id(); ?>">
 
-			<a href="<?php echo um_user_profile_url(); ?>" class="um-profile-photo-img"
-			   title="<?php echo um_user( 'display_name' ); ?>"><?php echo $overlay . get_avatar( um_user( 'ID' ), $default_size ); ?></a>
+			<a href="<?php echo um_user_profile_url(); ?>" class="um-profile-photo-img" title="<?php echo um_user( 'display_name' ); ?>">
+				<?php if ( !$default_size || $default_size == 'original' ) {
+					$profile_photo = UM()->uploader()->get_upload_base_url() . um_user( 'ID' ) . "/" . um_profile( 'profile_photo' );
+					$data = um_get_user_avatar_data( um_user( 'ID' ) );
+					echo sprintf( '<img src="%s" class="%s" alt="%s" data-default="%s" onerror="%s" />',
+						esc_attr( $profile_photo ),
+						esc_attr( $data['class'] ),
+						esc_attr( $data['alt'] ),
+						esc_attr( $data['default'] ),
+						'if ( ! this.getAttribute(\'data-load-error\') ){ this.setAttribute(\'data-load-error\', \'1\');this.setAttribute(\'src\', this.getAttribute(\'data-default\'));}'
+					);
+				} else {
+					echo $overlay . get_avatar( um_user( 'ID' ), $default_size );
+				} ?>
+			</a>
 
 			<?php
 

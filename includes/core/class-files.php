@@ -1455,8 +1455,7 @@ if ( ! class_exists( 'um\core\Files' ) ) {
 				}
 			}
 
-
-			$sizes = array( 'original' => 'Original size' ) + $sizes;
+			$sizes['original'] = 'Original size';
 
 			return $sizes;
 		}

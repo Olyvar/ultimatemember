@@ -741,7 +741,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 									'id'      		=> 'profile_photosize',
 									'type'     		=> 'select',
 									'label'    		=> __( 'Profile Photo Size','ultimate-member' ),
-									'default'  		=> 'original',
+									'default'  		=> '190',
 									'options'       => UM()->files()->get_profile_photo_size( 'photo_thumb_sizes' ),
 									'tooltip' 		=> __('The global default of profile photo size. This can be overridden by individual form settings','ultimate-member'),
 									'size'          => 'small'

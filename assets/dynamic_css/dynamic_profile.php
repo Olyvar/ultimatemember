@@ -1,6 +1,8 @@
 <style type="text/css">
 <?php
-
+if ( !$photosize || $photosize == 'original' ) {
+	$photosize = UM()->options()->get( 'image_max_width' );
+}
 $photosize = str_replace('px','',$photosize);
 $photosize_up = ( $photosize / 2 ) + 10;
 $meta_padding = ( $photosize + 60 ) . 'px';
@@ -12,6 +14,12 @@ print "
 }
 ";
 }
+
+print "
+.um-$form_id.um .um-profile-photo {
+	height: ".$photosize_up."px;
+}
+";
 
 print "
 .um-$form_id.um .um-profile-photo a.um-profile-photo-img {
