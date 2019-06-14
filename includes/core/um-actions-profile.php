@@ -629,7 +629,7 @@ function um_profile_header_cover_area( $args ) {
 
 				<?php if ( um_user( 'cover_photo' ) ) {
 
-					$get_cover_size = UM()->options()->get( 'profile_coversize' );
+					$get_cover_size = $args['coversize'];
 
 					if ( !$get_cover_size || $get_cover_size == 'original' ) {
 						$size = NULL;
@@ -723,7 +723,7 @@ add_action( 'um_after_profile_header_name_args', 'um_social_links_icons', 50 );
 function um_profile_header( $args ) {
 	$classes = null;
 
-	if (!$args['cover_enabled']) {
+	if ( ! $args['cover_enabled'] ) {
 		$classes .= ' no-cover';
 	}
 

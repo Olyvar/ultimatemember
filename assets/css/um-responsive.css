@@ -374,6 +374,7 @@ div.uimob500 .um-profile-photo {
 	position: absolute;
 	top: -40px;
 	left: 0;
+	height: 80px !important;
 }
 
 div.uimob500 .um-header.no-cover .um-profile-photo {
@@ -585,6 +586,10 @@ div.uimob800 .um-profile-photo a.um-profile-photo-img {
 	top: -70px !important;
 }
 
+div.uimob800 .um-profile-photo {
+	height: 80px !important;
+}
+
 div.uimob800 .um-header.no-cover .um-profile-photo a.um-profile-photo-img {
 	top: auto !important;
 }
@@ -672,6 +677,10 @@ div.uimob960 .um-profile-photo a.um-profile-photo-img {
 	width: 140px !important;
 	height: 140px !important;
 	top: -70px !important;
+}
+
+div.uimob960 .um-profile-photo {
+	height: 80px !important;
 }
 
 /************************************************/

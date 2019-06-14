@@ -123,11 +123,21 @@
 				'conditional'	=> array( '_um_profile_cover_enabled', '=', 1 )
 			),
 			array(
+				'id'		    => '_um_profile_coversize',
+				'type'		    => 'select',
+				'label'    		=> 	__( 'Cover Photo Size', 'ultimate-member' ),
+				'tooltip'    	=> __( 'Set the profile photo size in pixels here', 'ultimate-member' ),
+				'value' 		=> UM()->query()->get_meta_value( '_um_profile_coversize', null, UM()->options()->get( 'profile_coversize' ) ),
+				'options'       => UM()->files()->get_profile_photo_size( 'cover_thumb_sizes' ),
+				'conditional'	=> array( '_um_profile_cover_enabled', '=', 1 )
+			),
+			array(
 				'id'		    => '_um_profile_photosize',
-				'type'		    => 'text',
+				'type'		    => 'select',
 				'label'    		=> __( 'Profile Photo Size', 'ultimate-member' ),
 				'tooltip'    	=> __( 'Set the profile photo size in pixels here', 'ultimate-member' ),
 				'value' 		=> UM()->query()->get_meta_value( '_um_profile_photosize', null, UM()->options()->get( 'profile_photosize' ) ),
+				'options'       => UM()->files()->get_profile_photo_size( 'photo_thumb_sizes' ),
 				'conditional'	=> array( '_um_profile_use_custom_settings', '=', 1 )
 			),
 			array(

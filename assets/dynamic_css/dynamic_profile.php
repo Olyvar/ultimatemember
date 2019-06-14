@@ -2,8 +2,9 @@
 <?php
 if ( !$photosize || $photosize == 'original' ) {
 	$photosize = UM()->options()->get( 'image_max_width' );
+} else {
+	$photosize = str_replace('px','',$photosize);
 }
-$photosize = str_replace('px','',$photosize);
 $photosize_up = ( $photosize / 2 ) + 10;
 $meta_padding = ( $photosize + 60 ) . 'px';
 
