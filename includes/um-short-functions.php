@@ -618,7 +618,7 @@ function um_js_redirect( $url ) {
 			}
 		} ?>
 		<script data-cfasync='false' type="text/javascript">
-			window.location = '<?php echo $url; ?>';
+			window.location = '<?php echo esc_attr( $url ); ?>';
 		</script>
 		<?php exit;
 	} else {

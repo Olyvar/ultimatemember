@@ -2,7 +2,7 @@
 	UM()->builder()->form_id = $this->form_id;
 } ?>
 
-<div class="um-admin-builder" data-form_id="<?php echo UM()->builder()->form_id; ?>">
+<div class="um-admin-builder" data-form_id="<?php echo esc_attr( UM()->builder()->form_id ); ?>">
 
 	<div class="um-admin-drag-ctrls-demo um-admin-drag-ctrls">
 		
@@ -14,13 +14,13 @@
 	
 	<div class="um-admin-drag">
 		
-		<div class="um-admin-drag-ajax" data-form_id="<?php echo UM()->builder()->form_id; ?>">
+		<div class="um-admin-drag-ajax" data-form_id="<?php echo esc_attr( UM()->builder()->form_id ); ?>">
 		
 			<?php UM()->builder()->show_builder(); ?>
 			
 		</div>
 		
-		<div class="um-admin-drag-addrow um-admin-tipsy-n" title="<?php _e('Add Master Row','ultimate-member'); ?>" data-row_action="add_row"><i class="um-icon-plus"></i></div>
+		<div class="um-admin-drag-addrow um-admin-tipsy-n" title="<?php esc_attr_e('Add Master Row','ultimate-member'); ?>" data-row_action="add_row"><i class="um-icon-plus"></i></div>
 	
 	</div>
 

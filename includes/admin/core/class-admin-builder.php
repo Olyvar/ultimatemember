@@ -399,8 +399,8 @@ if ( ! class_exists( 'um\admin\core\Admin_Builder' ) ) {
 
 					<!-- Master Row Actions -->
 					<div class="um-admin-drag-row-icons">
-						<a href="#" class="um-admin-drag-rowsub-add um-admin-tipsy-n" title="<?php _e('Add Row','ultimate-member'); ?>" data-row_action="add_subrow"><i class="um-icon-plus"></i></a>
-						<a href="#" class="um-admin-drag-row-edit um-admin-tipsy-n" title="<?php _e('Edit Row','ultimate-member'); ?>" data-modal="UM_edit_row" data-modal-size="normal" data-dynamic-content="um_admin_edit_field_popup" data-arg1="row" data-arg2="<?php echo $this->form_id; ?>" data-arg3="_um_row_1"><i class="um-faicon-pencil"></i></a>
+						<a href="#" class="um-admin-drag-rowsub-add um-admin-tipsy-n" title="<?php esc_attr_e('Add Row','ultimate-member'); ?>" data-row_action="add_subrow"><i class="um-icon-plus"></i></a>
+						<a href="#" class="um-admin-drag-row-edit um-admin-tipsy-n" title="<?php esc_attr_e('Edit Row','ultimate-member'); ?>" data-modal="UM_edit_row" data-modal-size="normal" data-dynamic-content="um_admin_edit_field_popup" data-arg1="row" data-arg2="<?php echo esc_attr( $this->form_id ); ?>" data-arg3="_um_row_1"><i class="um-faicon-pencil"></i></a>
 						<span class="um-admin-drag-row-start"><i class="um-icon-arrow-move"></i></span>
 					</div><div class="um-admin-clear"></div>
 
@@ -465,15 +465,15 @@ if ( ! class_exists( 'um\admin\core\Admin_Builder' ) ) {
 
 					?>
 
-					<div class="um-admin-drag-row" data-original="<?php echo $row_id; ?>">
+					<div class="um-admin-drag-row" data-original="<?php echo esc_attr( $row_id ); ?>">
 
 						<!-- Master Row Actions -->
 						<div class="um-admin-drag-row-icons">
-							<a href="#" class="um-admin-drag-rowsub-add um-admin-tipsy-n" title="<?php _e('Add Row','ultimate-member'); ?>" data-row_action="add_subrow"><i class="um-icon-plus"></i></a>
-							<a href="#" class="um-admin-drag-row-edit um-admin-tipsy-n" title="<?php _e('Edit Row','ultimate-member'); ?>" data-modal="UM_edit_row" data-modal-size="normal" data-dynamic-content="um_admin_edit_field_popup" data-arg1="row" data-arg2="<?php echo $this->form_id; ?>" data-arg3="<?php echo $row_id; ?>"><i class="um-faicon-pencil"></i></a>
+							<a href="#" class="um-admin-drag-rowsub-add um-admin-tipsy-n" title="<?php esc_attr_e('Add Row','ultimate-member'); ?>" data-row_action="add_subrow"><i class="um-icon-plus"></i></a>
+							<a href="#" class="um-admin-drag-row-edit um-admin-tipsy-n" title="<?php esc_attr_e('Edit Row','ultimate-member'); ?>" data-modal="UM_edit_row" data-modal-size="normal" data-dynamic-content="um_admin_edit_field_popup" data-arg1="row" data-arg2="<?php echo esc_attr( $this->form_id ); ?>" data-arg3="<?php echo esc_attr( $row_id ); ?>"><i class="um-faicon-pencil"></i></a>
 							<span class="um-admin-drag-row-start"><i class="um-icon-arrow-move"></i></span>
 							<?php if ( $row_id != '_um_row_1' ) {?>
-								<a href="#" class="um-admin-tipsy-n" title="<?php _e('Delete Row','ultimate-member'); ?>" data-remove_element="um-admin-drag-row"><i class="um-faicon-trash-o"></i></a>
+								<a href="#" class="um-admin-tipsy-n" title="<?php esc_attr_e('Delete Row','ultimate-member'); ?>" data-remove_element="um-admin-drag-row"><i class="um-faicon-trash-o"></i></a>
 							<?php } ?>
 						</div><div class="um-admin-clear"></div>
 
@@ -536,28 +536,28 @@ if ( ! class_exists( 'um\admin\core\Admin_Builder' ) ) {
 
 												?>
 
-												<div class="um-admin-drag-fld um-admin-delete-area um-field-type-<?php echo $type; ?> <?php echo $key; ?>" data-group="<?php echo (isset($keyarray['in_group'])) ? $keyarray['in_group'] : ''; ?>" data-key="<?php echo $key; ?>" data-column="<?php echo ( isset($keyarray['in_column']) ) ? $keyarray['in_column'] : 1; ?>">
+												<div class="um-admin-drag-fld um-admin-delete-area um-field-type-<?php echo esc_attr( $type ); ?> <?php echo esc_attr( $key ); ?>" data-group="<?php echo esc_attr( (isset($keyarray['in_group'])) ? $keyarray['in_group'] : '' ); ?>" data-key="<?php echo esc_attr( $key ); ?>" data-column="<?php echo esc_attr( ( isset($keyarray['in_column']) ) ? $keyarray['in_column'] : 1 ); ?>">
 
-													<div class="um-admin-drag-fld-title um-field-type-<?php echo $type; ?>">
+													<div class="um-admin-drag-fld-title um-field-type-<?php echo esc_attr( $type ); ?>">
 														<?php if ( $type == 'group' ) { ?>
 															<i class="um-icon-plus"></i>
 														<?php } else if ( isset($keyarray['icon']) && !empty( $keyarray['icon'] ) ) { ?>
-															<i class="<?php echo $keyarray['icon']; ?>"></i>
-														<?php } ?><?php echo $title; ?></div>
+															<i class="<?php echo esc_attr( $keyarray['icon'] ); ?>"></i>
+														<?php } ?><?php echo esc_html( $title ); ?></div>
 													<?php $field_name = isset( UM()->builtin()->core_fields[$type]['name'] ) ? UM()->builtin()->core_fields[$type]['name'] : ''; ?>
-													<div class="um-admin-drag-fld-type um-field-type-<?php echo $type; ?>"><?php echo $field_name; ?></div>
-													<div class="um-admin-drag-fld-icons um-field-type-<?php echo $type; ?>">
+													<div class="um-admin-drag-fld-type um-field-type-<?php echo esc_attr( $type ); ?>"><?php echo esc_html( $field_name ); ?></div>
+													<div class="um-admin-drag-fld-icons um-field-type-<?php echo esc_attr( $type ); ?>">
 
-														<a href="#" class="um-admin-tipsy-n" title="Edit" data-modal="UM_edit_field" data-modal-size="normal" data-dynamic-content="um_admin_edit_field_popup" data-arg1="<?php echo $type; ?>" data-arg2="<?php echo $this->form_id; ?>" data-arg3="<?php echo $key; ?>"><i class="um-faicon-pencil"></i></a>
+														<a href="#" class="um-admin-tipsy-n" title="Edit" data-modal="UM_edit_field" data-modal-size="normal" data-dynamic-content="um_admin_edit_field_popup" data-arg1="<?php echo esc_attr( $type ); ?>" data-arg2="<?php echo esc_attr( $this->form_id ); ?>" data-arg3="<?php echo esc_attr( $key ); ?>"><i class="um-faicon-pencil"></i></a>
 
-														<a href="#" class="um-admin-tipsy-n um_admin_duplicate_field" title="Duplicate" data-silent_action="um_admin_duplicate_field" data-arg1="<?php echo $key; ?>" data-arg2="<?php echo $this->form_id; ?>"><i class="um-faicon-files-o"></i></a>
+														<a href="#" class="um-admin-tipsy-n um_admin_duplicate_field" title="Duplicate" data-silent_action="um_admin_duplicate_field" data-arg1="<?php echo esc_attr( $key ); ?>" data-arg2="<?php echo esc_attr( $this->form_id ); ?>"><i class="um-faicon-files-o"></i></a>
 
 														<?php if ( $type == 'group' ) { ?>
 
-															<a href="#" class="um-admin-tipsy-n" title="Delete Group" data-remove_element="um-admin-drag-fld.um-field-type-group" data-silent_action="um_admin_remove_field" data-arg1="<?php echo $key; ?>" data-arg2="<?php echo $this->form_id; ?>"><i class="um-faicon-trash-o"></i></a>
+															<a href="#" class="um-admin-tipsy-n" title="Delete Group" data-remove_element="um-admin-drag-fld.um-field-type-group" data-silent_action="um_admin_remove_field" data-arg1="<?php echo esc_attr( $key ); ?>" data-arg2="<?php echo esc_attr( $this->form_id ); ?>"><i class="um-faicon-trash-o"></i></a>
 														<?php } else { ?>
 
-															<a href="#" class="um-admin-tipsy-n" title="Delete" data-silent_action="um_admin_remove_field" data-arg1="<?php echo $key; ?>" data-arg2="<?php echo $this->form_id; ?>"><i class="um-faicon-trash-o"></i></a>
+															<a href="#" class="um-admin-tipsy-n" title="Delete" data-silent_action="um_admin_remove_field" data-arg1="<?php echo esc_attr( $key ); ?>" data-arg2="<?php echo esc_attr( $this->form_id ); ?>"><i class="um-faicon-trash-o"></i></a>
 
 														<?php } ?>
 
@@ -830,12 +830,12 @@ if ( ! class_exists( 'um\admin\core\Admin_Builder' ) ) {
 					ob_start(); ?>
 
 					<div class="um-admin-metabox">
-						<p class="_icon_search"><input type="text" name="_icon_search" id="_icon_search" value="" placeholder="<?php _e('Search Icons...','ultimate-member'); ?>" /></p>
+						<p class="_icon_search"><input type="text" name="_icon_search" id="_icon_search" value="" placeholder="<?php esc_attr_e('Search Icons...','ultimate-member'); ?>" /></p>
 					</div>
 
 					<div class="um-admin-icons">
 						<?php foreach( UM()->fonticons()->all as $icon ) { ?>
-							<span data-code="<?php echo $icon; ?>" title="<?php echo $icon; ?>" class="um-admin-tipsy-n"><i class="<?php echo $icon; ?>"></i></span>
+							<span data-code="<?php echo esc_attr( $icon ); ?>" title="<?php echo esc_attr( $icon ); ?>" class="um-admin-tipsy-n"><i class="<?php echo esc_attr( $icon ); ?>"></i></span>
 						<?php } ?>
 					</div><div class="um-admin-clear"></div>
 
@@ -860,7 +860,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Builder' ) ) {
 								if ( isset( $array['in_fields'] ) && $array['in_fields'] == false ) { } else {
 									?>
 
-									<a href="#" class="button" data-modal="UM_add_field" data-modal-size="normal" data-dynamic-content="um_admin_new_field_popup" data-arg1="<?php echo $field_type; ?>" data-arg2="<?php echo $arg2 ?>"><?php echo $array['name']; ?></a>
+									<a href="#" class="button" data-modal="UM_add_field" data-modal-size="normal" data-dynamic-content="um_admin_new_field_popup" data-arg1="<?php echo esc_attr( $field_type ); ?>" data-arg2="<?php echo esc_attr( $arg2 ); ?>"><?php echo esc_html( $array['name'] ); ?></a>
 
 								<?php } } } ?>
 
@@ -875,7 +875,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Builder' ) ) {
 
 								if ( !isset( $array['account_only'] ) && !isset( $array['private_use'] ) ) {?>
 
-									<a href="#" class="button" <?php disabled( in_array( $field_key, $form_fields, true ) ) ?> data-silent_action="um_admin_add_field_from_predefined" data-arg1="<?php echo $field_key; ?>" data-arg2="<?php echo $arg2; ?>"><?php echo um_trim_string( stripslashes( $array['title'] ), 20 ); ?></a>
+									<a href="#" class="button" <?php disabled( in_array( $field_key, $form_fields, true ) ) ?> data-silent_action="um_admin_add_field_from_predefined" data-arg1="<?php echo esc_attr( $field_key ); ?>" data-arg2="<?php echo esc_attr( $arg2 ); ?>"><?php echo esc_html( um_trim_string( stripslashes( $array['title'] ), 20 ) ); ?></a>
 
 								<?php } } } else { echo '<p>' . __('None','ultimate-member') . '</p>'; } ?>
 
@@ -890,7 +890,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Builder' ) ) {
 
 								?>
 
-								<a href="#" class="button with-icon" <?php disabled( in_array( $field_key, $form_fields, true ) ) ?> data-silent_action="um_admin_add_field_from_list" data-arg1="<?php echo $field_key; ?>" data-arg2="<?php echo $arg2; ?>"><?php echo um_trim_string( stripslashes( $array['title'] ), 20 ); ?> <small>(<?php echo ucfirst( $array['type']); ?>)</small><span class="remove"></span></a>
+								<a href="#" class="button with-icon" <?php disabled( in_array( $field_key, $form_fields, true ) ) ?> data-silent_action="um_admin_add_field_from_list" data-arg1="<?php echo esc_attr( $field_key ); ?>" data-arg2="<?php echo esc_attr( $arg2 ); ?>"><?php echo esc_html( um_trim_string( stripslashes( $array['title'] ), 20 ) ); ?> <small>(<?php echo esc_attr( ucfirst( $array['type']) ); ?>)</small><span class="remove"></span></a>
 
 							<?php } } else { echo '<p>' . __('You did not create any custom fields', 'ultimate-member') . '</p>'; } ?>
 
@@ -930,21 +930,21 @@ if ( ! class_exists( 'um\admin\core\Admin_Builder' ) ) {
 						?>
 
 						<?php if ( isset( $metabox->edit_array['in_group'] ) ) { ?>
-							<input type="hidden" name="_in_row" id="_in_row" value="<?php echo $metabox->edit_array['in_row']; ?>" />
-							<input type="hidden" name="_in_sub_row" id="_in_sub_row" value="<?php echo $metabox->edit_array['in_sub_row']; ?>" />
-							<input type="hidden" name="_in_column" id="_in_column" value="<?php echo $metabox->edit_array['in_column']; ?>" />
-							<input type="hidden" name="_in_group" id="_in_group" value="<?php echo $metabox->edit_array['in_group']; ?>" />
+							<input type="hidden" name="_in_row" id="_in_row" value="<?php echo esc_attr( $metabox->edit_array['in_row'] ); ?>" />
+							<input type="hidden" name="_in_sub_row" id="_in_sub_row" value="<?php echo esc_attr( $metabox->edit_array['in_sub_row'] ); ?>" />
+							<input type="hidden" name="_in_column" id="_in_column" value="<?php echo esc_attr( $metabox->edit_array['in_column'] ); ?>" />
+							<input type="hidden" name="_in_group" id="_in_group" value="<?php echo esc_attr( $metabox->edit_array['in_group'] ); ?>" />
 						<?php } ?>
 
-						<input type="hidden" name="_type" id="_type" value="<?php echo $arg1; ?>" />
+						<input type="hidden" name="_type" id="_type" value="<?php echo esc_attr( $arg1 ); ?>" />
 
-						<input type="hidden" name="post_id" id="post_id" value="<?php echo $arg2; ?>" />
+						<input type="hidden" name="post_id" id="post_id" value="<?php echo esc_attr( $arg2 ); ?>" />
 
 						<input type="hidden" name="edit_mode" id="edit_mode" value="true" />
 
-						<input type="hidden" name="_metakey" id="_metakey" value="<?php echo $metabox->edit_array['metakey']; ?>" />
+						<input type="hidden" name="_metakey" id="_metakey" value="<?php echo esc_attr( $metabox->edit_array['metakey'] ); ?>" />
 
-						<input type="hidden" name="_position" id="_position" value="<?php echo $metabox->edit_array['position']; ?>" />
+						<input type="hidden" name="_position" id="_position" value="<?php echo esc_attr( $metabox->edit_array['position'] ); ?>" />
 
 						<?php if ( isset( $args['mce_content'] ) ) { ?><div class="dynamic-mce-content"><?php echo $metabox->edit_array['content']; ?></div><?php } ?>
 
@@ -1000,15 +1000,15 @@ if ( ! class_exists( 'um\admin\core\Admin_Builder' ) ) {
 					} else {
 
 						if ( $in_column ) { ?>
-							<input type="hidden" name="_in_row" id="_in_row" value="_um_row_<?php echo $in_row + 1; ?>" />
-							<input type="hidden" name="_in_sub_row" id="_in_sub_row" value="<?php echo $in_sub_row; ?>" />
-							<input type="hidden" name="_in_column" id="_in_column" value="<?php echo $in_column; ?>" />
-							<input type="hidden" name="_in_group" id="_in_group" value="<?php echo $in_group; ?>" />
+							<input type="hidden" name="_in_row" id="_in_row" value="_um_row_<?php echo esc_attr( $in_row + 1 ); ?>" />
+							<input type="hidden" name="_in_sub_row" id="_in_sub_row" value="<?php echo esc_attr( $in_sub_row ); ?>" />
+							<input type="hidden" name="_in_column" id="_in_column" value="<?php echo esc_attr( $in_column ); ?>" />
+							<input type="hidden" name="_in_group" id="_in_group" value="<?php echo esc_attr( $in_group ); ?>" />
 						<?php } ?>
 
-						<input type="hidden" name="_type" id="_type" value="<?php echo $arg1; ?>" />
+						<input type="hidden" name="_type" id="_type" value="<?php echo esc_attr( $arg1 ); ?>" />
 
-						<input type="hidden" name="post_id" id="post_id" value="<?php echo $arg2; ?>" />
+						<input type="hidden" name="post_id" id="post_id" value="<?php echo esc_attr( $arg2 ); ?>" />
 
 						<?php $this->modal_header(); ?>
 

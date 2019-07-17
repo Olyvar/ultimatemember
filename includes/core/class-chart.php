@@ -83,16 +83,8 @@ if ( ! class_exists( 'um\core\Chart' ) ) {
 				function draw_linechart() {
 
 					var data = new google.visualization.DataTable();
-					data.addColumn('string', '<?php echo $x_label; ?>');
-					data.addColumn('number', '<?php echo $y_label; ?>');
-
-					<?php /*if ( ! empty( $data_y ) ) {
-
-						foreach ( $data_y as $key => $val ) {
-
-						}
-
-					}*/ ?>
+					data.addColumn('string', '<?php echo esc_attr( $x_label ); ?>');
+					data.addColumn('number', '<?php echo esc_attr( $y_label ); ?>');
 
 					var min_data = 0;
 					var max_data = data.getColumnRange(1).max;
@@ -102,21 +94,21 @@ if ( ! class_exists( 'um\core\Chart' ) ) {
 
 					/* Options */
 					var options = {
-						backgroundColor: '<?php echo $backgroundcolor; ?>',
-						colors: ['<?php echo $colors; ?>'],
+						backgroundColor: '<?php echo esc_attr( $backgroundcolor ); ?>',
+						colors: ['<?php echo esc_attr( $colors ); ?>'],
 						curveType: 'function',
 						pointSize: 8,
 						lineWidth: 4,
 						vAxis:{
-							baselineColor: '<?php echo $basebordercolor; ?>',
-							gridlineColor: '<?php echo $basebordercolor; ?>',
+							baselineColor: '<?php echo esc_attr( $basebordercolor ); ?>',
+							gridlineColor: '<?php echo esc_attr( $basebordercolor ); ?>',
 							gridlines: {color: 'transparent', count: vgrid_count},
-							textStyle: {color: '<?php echo $basetextcolor; ?>', fontSize: 12 },
+							textStyle: {color: '<?php echo esc_attr( $basetextcolor ); ?>', fontSize: 12 },
 							format: '#',
 							viewWindow: {min: min_data, max: max_data + 10}
 						},
 						hAxis:{
-							textStyle: {color: '<?php echo $basetextcolor; ?>', fontSize: 12, italic: true },
+							textStyle: {color: '<?php echo esc_attr( $basetextcolor ); ?>', fontSize: 12, italic: true },
 							showTextEvery: hgrid_count,
 							maxAlternation: 1,
 							maxTextLines: 1
@@ -124,15 +116,15 @@ if ( ! class_exists( 'um\core\Chart' ) ) {
 						legend: {
 							position: 'top',
 							alignment: 'start',
-							textStyle: {color: '<?php echo $basetextcolor; ?>', fontSize: 13}
+							textStyle: {color: '<?php echo esc_attr( $basetextcolor ); ?>', fontSize: 13}
 						},
 						tooltip: {
-							textStyle: {color: '<?php echo $basetextcolor; ?>', fontSize: 12}
+							textStyle: {color: '<?php echo esc_attr( $basetextcolor ); ?>', fontSize: 12}
 						},
 						chartArea: {
 							top:50,left:30,width: '95%', 'height' : ( vgrid_count * 50 ) - 100,
 							backgroundColor: {
-								stroke: '<?php echo $basebordercolor; ?>',
+								stroke: '<?php echo esc_attr( $basebordercolor ); ?>',
 								strokeWidth: 1
 							}
 						},
@@ -140,14 +132,14 @@ if ( ! class_exists( 'um\core\Chart' ) ) {
 						height: ( vgrid_count * 50 )
 					};
 
-					var chart = new google.visualization.LineChart( document.getElementById( 'chart_<?php echo $data . $id; ?>' ) );
+					var chart = new google.visualization.LineChart( document.getElementById( 'chart_<?php echo esc_attr( $data . $id ); ?>' ) );
 					chart.draw( data, options );
 
 				}
 
 			</script>
 
-			<div id="chart_<?php echo $data . $id; ?>"></div>
+			<div id="chart_<?php echo esc_attr( $data . $id ); ?>"></div>
 
 			<?php
 		}

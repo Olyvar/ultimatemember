@@ -120,7 +120,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Users' ) ) {
 					<?php echo $this->get_bulk_admin_actions(); ?>
 				</select>
 
-				<input name="um_bulkedit" id="um_bulkedit" class="button" value="<?php _e( 'Apply', 'ultimate-member' ); ?>" type="submit" />
+				<input name="um_bulkedit" id="um_bulkedit" class="button" value="<?php esc_attr_e( 'Apply', 'ultimate-member' ); ?>" type="submit" />
 
 			</div>
 

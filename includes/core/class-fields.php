@@ -44,8 +44,8 @@ if ( ! class_exists( 'um\core\Fields' ) ) {
 			<div class="um-field um-field-c">
 				<div class="um-field-area">
 					<label class="um-field-checkbox <?php echo ( $checked ) ? 'active' : '' ?>">
-						<input type="checkbox" name="<?php echo $id; ?>" value="1" <?php checked( $checked ) ?> />
-						<span class="um-field-checkbox-state"><i class="<?php echo $class ?>"></i></span>
+						<input type="checkbox" name="<?php echo esc_attr( $id ); ?>" value="1" <?php checked( $checked ) ?> />
+						<span class="um-field-checkbox-state"><i class="<?php echo esc_attr( $class ); ?>"></i></span>
 						<span class="um-field-checkbox-option"> <?php echo $title; ?></span>
 					</label>
 				</div>
@@ -71,9 +71,9 @@ if ( ! class_exists( 'um\core\Fields' ) ) {
 			foreach ( $social as $k => $arr ) {
 				if ( um_profile( $k ) ) { ?>
 
-					<a href="<?php echo um_filtered_social_link( $k, $arr['match'] ); ?>"
+					<a href="<?php echo esc_url( um_filtered_social_link( $k, $arr['match'] ) ); ?>"
 					   style="background: <?php echo $arr['color']; ?>;" target="_blank" class="um-tip-n"
-					   title="<?php echo $arr['title']; ?>"><i class="<?php echo $arr['icon']; ?>"></i></a>
+					   title="<?php echo esc_attr( $arr['title'] ); ?>"><i class="<?php echo esc_attr( $arr['icon'] ); ?>"></i></a>
 
 					<?php
 				}

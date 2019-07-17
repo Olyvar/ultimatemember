@@ -427,7 +427,7 @@ function um_add_submit_button_to_login( $args ) {
 				<input type="submit" value="<?php esc_attr_e( wp_unslash( $primary_btn_word ), 'ultimate-member' ); ?>" class="um-button" id="um-submit-btn" />
 			</div>
 			<div class="um-right um-half">
-				<a href="<?php echo esc_attr( $secondary_btn_url ); ?>" class="um-button um-alt">
+				<a href="<?php echo esc_url( $secondary_btn_url ); ?>" class="um-button um-alt">
 					<?php _e( wp_unslash( $secondary_btn_word ), 'ultimate-member' ); ?>
 				</a>
 			</div>
@@ -460,7 +460,7 @@ function um_after_login_submit( $args ) {
 	} ?>
 
 	<div class="um-col-alt-b">
-		<a href="<?php echo um_get_core_page('password-reset'); ?>" class="um-link-alt">
+		<a href="<?php echo esc_url( um_get_core_page('password-reset') ); ?>" class="um-link-alt">
 			<?php _e( 'Forgot your password?', 'ultimate-member' ); ?>
 		</a>
 	</div>

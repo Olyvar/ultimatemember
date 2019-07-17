@@ -475,7 +475,7 @@ $ListTable->um_set_pagination_args( array( 'total_items' => count( $roles ), 'pe
 <div class="wrap">
 	<h2>
 		<?php _e( 'User Roles', 'ultimate-member' ) ?>
-		<a class="add-new-h2" href="<?php echo add_query_arg( array( 'page' => 'um_roles', 'tab' => 'add' ), admin_url( 'admin.php' ) ) ?>">
+		<a class="add-new-h2" href="<?php echo esc_url( add_query_arg( array( 'page' => 'um_roles', 'tab' => 'add' ), admin_url( 'admin.php' ) ) ); ?>">
 			<?php _e( 'Add New', 'ultimate-member' ) ?>
 		</a>
 	</h2>

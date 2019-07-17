@@ -612,7 +612,7 @@ if ( ! class_exists( 'um\core\User' ) ) {
 
 			ob_start(); ?>
 
-			<div id="<?php echo $class ?>" <?php echo $style ?>>
+			<div id="<?php echo esc_attr( $class ); ?>" <?php echo $style ?>>
 				<table class="form-table">
 					<tbody>
 					<tr>

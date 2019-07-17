@@ -271,7 +271,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Upgrade' ) ) {
 						um_add_upgrade_log( 'Get Upgrades Packages...' );
 
 						jQuery.ajax({
-							url: '<?php echo admin_url( 'admin-ajax.php' ) ?>',
+							url: '<?php echo esc_attr( admin_url( 'admin-ajax.php' ) ); ?>',
 							type: 'POST',
 							dataType: 'json',
 							data: {
@@ -301,7 +301,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Upgrade' ) ) {
 						um_add_upgrade_log( '<br />=================================================================' );
 						um_add_upgrade_log( '<h4 style="font-weight: bold;">Prepare package "' + pack + '" version...</h4>' );
 						jQuery.ajax({
-							url: '<?php echo admin_url( 'admin-ajax.php' ) ?>',
+							url: '<?php echo esc_attr( admin_url( 'admin-ajax.php' ) ); ?>',
 							type: 'POST',
 							dataType: 'html',
 							data: {
@@ -315,7 +315,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Upgrade' ) ) {
 							}
 						});
 					} else {
-						window.location = '<?php echo add_query_arg( array( 'page' => 'ultimatemember', 'msg' => 'updated' ), admin_url( 'admin.php' ) ) ?>'
+						window.location = '<?php echo esc_attr( add_query_arg( array( 'page' => 'ultimatemember', 'msg' => 'updated' ), admin_url( 'admin.php' ) ) ); ?>';
 					}
 
 					return false;

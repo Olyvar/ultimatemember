@@ -391,7 +391,7 @@ function um_account_page_hidden_fields( $args ) {
 	?>
 
 	<input type="hidden" name="_um_account" id="_um_account" value="1" />
-	<input type="hidden" name="_um_account_tab" id="_um_account_tab" value="<?php echo UM()->account()->current_tab;?>" />
+	<input type="hidden" name="_um_account_tab" id="_um_account_tab" value="<?php echo esc_attr( UM()->account()->current_tab );?>" />
 
 	<?php
 }

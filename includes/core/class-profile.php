@@ -360,7 +360,7 @@ if ( ! class_exists( 'um\core\Profile' ) ) {
 		function new_ui( $position, $element, $trigger, $items ) {
 			?>
 
-			<div class="um-dropdown" data-element="<?php echo $element; ?>" data-position="<?php echo $position; ?>" data-trigger="<?php echo $trigger; ?>">
+			<div class="um-dropdown" data-element="<?php echo esc_attr( $element ); ?>" data-position="<?php echo esc_attr( $position ); ?>" data-trigger="<?php echo esc_attr( $trigger ); ?>">
 				<div class="um-dropdown-b">
 					<div class="um-dropdown-arr"><i class=""></i></div>
 					<ul>

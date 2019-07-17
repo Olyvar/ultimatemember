@@ -1396,9 +1396,9 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 
 
 					<p class="submit">
-						<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e( 'Save Changes', 'ultimate-member' ) ?>" />
+						<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php esc_attr_e( 'Save Changes', 'ultimate-member' ) ?>" />
 						<?php $um_settings_nonce = wp_create_nonce( 'um-settings-nonce' ); ?>
-						<input type="hidden" name="__umnonce" value="<?php echo $um_settings_nonce; ?>" />
+						<input type="hidden" name="__umnonce" value="<?php echo esc_attr( $um_settings_nonce ); ?>" />
 					</p>
 				</form>
 
@@ -1879,7 +1879,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 			<div class="wrap-licenses">
 				<input type="hidden" id="licenses_settings" name="licenses_settings" value="1">
 				<?php $um_settings_nonce = wp_create_nonce( 'um-settings-nonce' ); ?>
-				<input type="hidden" name="__umnonce" value="<?php echo $um_settings_nonce; ?>" />
+				<input type="hidden" name="__umnonce" value="<?php echo esc_attr( $um_settings_nonce ); ?>" />
 				<table class="form-table um-settings-section">
 					<tbody>
 					<?php foreach ( $section_fields as $field_data ) {
@@ -2126,29 +2126,29 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 						?>
 
 						<tr class="um-settings-line">
-							<th><label for="um_options_<?php echo $field_data['id'] ?>"><?php echo $field_data['label'] ?></label></th>
+							<th><label for="um_options_<?php echo esc_attr( $field_data['id'] ); ?>"><?php echo $field_data['label'] ?></label></th>
 							<td>
 								<form method="post" action="" name="um-settings-form" class="um-settings-form">
 									<input type="hidden" value="save" name="um-settings-action" />
 									<input type="hidden" name="licenses_settings" value="1" />
 									<?php $um_settings_nonce = wp_create_nonce( 'um-settings-nonce' ); ?>
-									<input type="hidden" name="__umnonce" value="<?php echo $um_settings_nonce; ?>" />
-									<input type="text" id="um_options_<?php echo $field_data['id'] ?>" name="um_options[<?php echo $field_data['id'] ?>]" value="<?php echo $value ?>" class="um-option-field um-long-field" data-field_id="<?php echo $field_data['id'] ?>" />
+									<input type="hidden" name="__umnonce" value="<?php echo esc_attr( $um_settings_nonce ); ?>" />
+									<input type="text" id="um_options_<?php echo esc_attr( $field_data['id'] ); ?>" name="um_options[<?php echo esc_attr( $field_data['id'] ); ?>]" value="<?php echo esc_attr( $value ); ?>" class="um-option-field um-long-field" data-field_id="<?php echo esc_attr( $field_data['id'] ); ?>" />
 									<?php if ( ! empty( $field_data['description'] ) ) { ?>
 										<div class="description"><?php echo $field_data['description'] ?></div>
 									<?php } ?>
 
 									<?php if ( ! empty( $value ) && ( ( is_object( $license ) && 'valid' == $license->license ) || 'valid' == $license ) ) { ?>
-										<input type="button" class="button um_license_deactivate" id="<?php echo $field_data['id'] ?>_deactivate" value="<?php _e( 'Clear License',  'ultimate-member' ) ?>"/>
+										<input type="button" class="button um_license_deactivate" id="<?php echo esc_attr( $field_data['id'] ); ?>_deactivate" value="<?php esc_attr_e( 'Clear License',  'ultimate-member' ); ?>"/>
 									<?php } elseif ( empty( $value ) ) { ?>
-										<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e( 'Activate', 'ultimate-member' ) ?>" />
+										<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php esc_attr_e( 'Activate', 'ultimate-member' ); ?>" />
 									<?php } else { ?>
-										<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e( 'Re-Activate', 'ultimate-member' ) ?>" />
+										<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php esc_attr_e( 'Re-Activate', 'ultimate-member' ); ?>" />
 									<?php }
 
 									if ( ! empty( $messages ) ) {
 										foreach ( $messages as $message ) { ?>
-											<div class="edd-license-data edd-license-<?php echo $class . ' ' . $license_status ?>">
+											<div class="edd-license-data edd-license-<?php echo esc_attr( $class . ' ' . $license_status ); ?>">
 												<p><?php echo $message ?></p>
 											</div>
 										<?php }
@@ -2195,7 +2195,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 				<h3>Install Info</h3>
 
 				<form action="" method="post" dir="ltr">
-					<textarea style="width:70%; height:400px;" readonly="readonly" onclick="this.focus();this.select()" id="install-info-textarea" name="um-install-info" title="<?php _e( 'To copy the Install info, click below then press Ctrl + C (PC) or Cmd + C (Mac).', 'ultimate-member' ); ?>">
+					<textarea style="width:70%; height:400px;" readonly="readonly" onclick="this.focus();this.select()" id="install-info-textarea" name="um-install-info" title="<?php esc_attr_e( 'To copy the Install info, click below then press Ctrl + C (PC) or Cmd + C (Mac).', 'ultimate-member' ); ?>">
 ### Begin Install Info ###
 
 ## Please include this information when posting support requests ##
@@ -2368,7 +2368,7 @@ Panic Key: 								<?php  echo UM()->options()->get('panic_key') . "\n"; ?>
 Global Site Access:						<?php  $arr = array('Site accessible to Everyone','','Site accessible to Logged In Users'); echo $arr[ intval( UM()->options()->get('accessible') ) ] . "\n"; ?>
 <?php if( UM()->options()->get('accessible') == 2 ) { ?>
 Custom Redirect URL:						<?php echo UM()->options()->get('access_redirect')."\n";?>
-Exclude the following URLs:<?php echo "\t\t\t\t".implode("\t\n\t\t\t\t\t\t\t\t\t\t",UM()->options()->get('access_exclude_uris') )."\n";?>
+Exclude the following URLs:<?php echo esc_attr( "\t\t\t\t".implode("\t\n\t\t\t\t\t\t\t\t\t\t",UM()->options()->get('access_exclude_uris') )."\n" );?>
 <?php } ?>
 Backend Login Screen for Guests:			<?php echo $this->info_value( UM()->options()->get('wpadmin_login'), 'yesno', true ); ?>
 <?php if( ! UM()->options()->get('wpadmin_login') ) { ?>

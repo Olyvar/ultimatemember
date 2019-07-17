@@ -53,7 +53,7 @@
 
 					<?php } else { ?>
 
-						<div class="um-account-meta-img-b uimob800-show um-tip-w" title="<?php echo esc_attr( um_user( 'display_name' ) ); ?>"><a href="<?php echo um_user_profile_url(); ?>"><?php echo get_avatar( um_user('ID'), 120 ); ?></a></div>
+						<div class="um-account-meta-img-b uimob800-show um-tip-w" title="<?php echo esc_attr( um_user( 'display_name' ) ); ?>"><a href="<?php echo esc_url( um_user_profile_url() ); ?>"><?php echo get_avatar( um_user('ID'), 120 ); ?></a></div>
 
 					<?php } ?>
 

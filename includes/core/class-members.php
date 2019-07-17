@@ -253,7 +253,7 @@ if ( ! class_exists( 'um\core\Members' ) ) {
 						$label = isset( $attrs['title'] ) ? $attrs['title'] : '';
 					} ?>
 
-					<select name="<?php echo $filter; ?>" id="<?php echo $filter; ?>" class="um-s1" style="width: 100%" data-placeholder="<?php echo __( stripslashes( $label ), 'ultimate-member' ); ?>" <?php if ( ! empty( $attrs['custom_dropdown_options_source'] ) ) { ?> data-um-parent="<?php echo $attrs['parent_dropdown_relationship']; ?>" data-mebers-directory="yes"  data-um-ajax-source="<?php echo $attrs['custom_dropdown_options_source'] ?>"<?php } ?>>
+					<select name="<?php echo esc_attr( $filter ); ?>" id="<?php echo esc_attr( $filter ); ?>" class="um-s1" style="width: 100%" data-placeholder="<?php echo esc_attr( __( stripslashes( $label ), 'ultimate-member' ) ); ?>" <?php if ( ! empty( $attrs['custom_dropdown_options_source'] ) ) { ?> data-um-parent="<?php echo esc_attr( $attrs['parent_dropdown_relationship'] ); ?>" data-mebers-directory="yes"  data-um-ajax-source="<?php echo esc_attr( $attrs['custom_dropdown_options_source'] ); ?>"<?php } ?>>
 
 						<option></option>
 
@@ -272,7 +272,7 @@ if ( ! class_exists( 'um\core\Members' ) ) {
 
 							?>
 
-                            <option value="<?php echo $opt; ?>" <?php um_select_if_in_query_params( $filter, $opt ); ?> <?php selected( isset( $_GET[$filter] ) && $_GET[$filter] == $v ) ?>><?php echo __( $v, 'ultimate-member'); ?></option>
+                            <option value="<?php echo esc_attr( $opt ); ?>" <?php um_select_if_in_query_params( $filter, $opt ); ?> <?php selected( isset( $_GET[$filter] ) && $_GET[$filter] == $v ) ?>><?php echo __( $v, 'ultimate-member'); ?></option>
 
 						<?php } ?>
 
@@ -286,7 +286,7 @@ if ( ! class_exists( 'um\core\Members' ) ) {
 
 					?>
 
-                    <input type="text" autocomplete="off" name="<?php echo $filter; ?>" id="<?php echo $filter; ?>" placeholder="<?php echo isset( $attrs['label'] ) ? __( $attrs['label'], 'ultimate-member') : ''; ?>" value='<?php echo esc_attr( um_queried_search_value(  $filter, false ) ); ?>' />
+                    <input type="text" autocomplete="off" name="<?php echo esc_attr( $filter ); ?>" id="<?php echo esc_attr( $filter ); ?>" placeholder="<?php echo esc_attr( isset( $attrs['label'] ) ? __( $attrs['label'], 'ultimate-member') : '' ); ?>" value='<?php echo esc_attr( um_queried_search_value(  $filter, false ) ); ?>' />
 
 					<?php
 

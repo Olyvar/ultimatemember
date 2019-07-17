@@ -328,7 +328,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Menu' ) ) {
 					//<![CDATA[
 					jQuery(document).ready( function($) {
 						// postboxes setup
-						postboxes.add_postbox_toggles('<?php echo $this->pagehook; ?>');
+						postboxes.add_postbox_toggles('<?php echo esc_attr( $this->pagehook ); ?>');
 					});
 					//]]>
 				</script>

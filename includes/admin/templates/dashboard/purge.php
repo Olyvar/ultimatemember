@@ -5,7 +5,7 @@
 	</p>
 
 	<p>
-		<a href="<?php echo add_query_arg( 'um_adm_action', 'purge_temp' ); ?>" class="button">
+		<a href="<?php echo esc_url( add_query_arg( 'um_adm_action', 'purge_temp' ) ); ?>" class="button">
 			<?php _e( 'Purge Temp', 'ultimate-member' ); ?>
 		</a>
 	</p>

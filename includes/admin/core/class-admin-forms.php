@@ -1062,7 +1062,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Forms' ) ) {
 
 			ob_start(); ?>
 
-			<div class="email_template_wrapper <?php echo $field_data['in_theme'] ? 'in_theme' : '' ?>" data-key="<?php echo $field_data['id'] ?>" style="position: relative;">
+			<div class="email_template_wrapper <?php echo $field_data['in_theme'] ? 'in_theme' : '' ?>" data-key="<?php echo esc_attr( $field_data['id'] ); ?>" style="position: relative;">
 
 				<?php wp_editor( $value,
 					$id,
@@ -1075,7 +1075,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Forms' ) ) {
 						'editor_class'  => $class
 					)
 				); ?>
-				<span class="description">For default text for plain-text emails please see this <a href="https://docs.ultimatemember.com/article/1342-plain-text-email-default-templates#<?php echo $field_data['id'] ?>" target="_blank">doc</a></span>
+				<span class="description">For default text for plain-text emails please see this <a href="https://docs.ultimatemember.com/article/1342-plain-text-email-default-templates#<?php echo esc_attr( $field_data['id'] ); ?>" target="_blank">doc</a></span>
 			</div>
 
 			<?php $html = ob_get_clean();
