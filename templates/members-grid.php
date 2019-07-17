@@ -34,7 +34,7 @@
 					<div class="um-member-card <?php if (!$profile_photo) { echo 'no-photo'; } ?>">
 						
 						<?php if ( $show_name ) { ?>
-						<div class="um-member-name"><a href="<?php echo esc_url( um_user_profile_url() ); ?>" title="<?php echo esc_attr( um_user('display_name') ); ?>"><?php esc_html_e( um_user('display_name', 'html') ); ?></a></div>
+						<div class="um-member-name"><a href="<?php echo esc_url( um_user_profile_url() ); ?>" title="<?php echo esc_attr( um_user('display_name') ); ?>"><?php echo um_user('display_name', 'html'); ?></a></div>
 						<?php } ?>
 						
 						<?php
