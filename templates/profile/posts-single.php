@@ -34,7 +34,7 @@
 				$comments = __( '1 comment', 'ultimate-member' );
 			} ?>
 
-			<a href="<?php echo esc_url( get_comments_link( $post->ID ) ); ?>"><?php echo $comments; ?></a>
+			<a href="<?php echo esc_url( get_comments_link( $post->ID ) ); ?>"><?php echo esc_html( $comments ); ?></a>
 		</span>
 	</div>
 </div>

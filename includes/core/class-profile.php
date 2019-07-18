@@ -365,7 +365,7 @@ if ( ! class_exists( 'um\core\Profile' ) ) {
 					<div class="um-dropdown-arr"><i class=""></i></div>
 					<ul>
 						<?php foreach ( $items as $k => $v ) { ?>
-							<li><?php echo $v; ?></li>
+							<li><?php echo esc_html( $v ); ?></li>
 						<?php } ?>
 					</ul>
 				</div>

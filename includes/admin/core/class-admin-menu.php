@@ -301,7 +301,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Menu' ) ) {
 
 				<div id="um-metaboxes-general" class="wrap">
 
-					<h1>Ultimate Member <sup><?php echo ultimatemember_version; ?></sup></h1>
+					<h1>Ultimate Member <sup><?php echo esc_html( ultimatemember_version ); ?></sup></h1>
 
 					<?php wp_nonce_field( 'um-metaboxes-general' ); ?>
 					<?php wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false ); ?>

@@ -612,7 +612,7 @@ if ( ! class_exists( 'um\core\User' ) ) {
 
 			ob_start(); ?>
 
-			<div id="<?php echo esc_attr( $class ); ?>" <?php echo $style ?>>
+			<div id="<?php echo esc_attr( $class ); ?>" <?php echo $style; ?>>
 				<table class="form-table">
 					<tbody>
 					<tr>
@@ -621,7 +621,7 @@ if ( ! class_exists( 'um\core\User' ) ) {
 							<select name="um-role" id="um-role">
 								<option value="" <?php selected( empty( $user_role ) ) ?>><?php esc_html_e( '&mdash; No role for Ultimate Member &mdash;', 'ultimate-member' ); ?></option>
 								<?php foreach ( $roles as $role_id => $details ) { ?>
-									<option <?php selected( $user_role, $role_id ); ?> value="<?php echo esc_attr( $role_id ); ?>"><?php echo $details['name']; ?></option>
+									<option <?php selected( $user_role, $role_id ); ?> value="<?php echo esc_attr( $role_id ); ?>"><?php echo esc_html( $details['name'] ); ?></option>
 								<?php } ?>
 							</select>
 						</td>

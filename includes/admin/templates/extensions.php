@@ -186,7 +186,7 @@ $free['terms-conditions'] = array(
 							<img src="<?php echo esc_attr( um_url . 'assets/img/extensions/' . $key . '.png'  ); ?>" alt="<?php echo esc_attr( $info['name'] ); ?>" />
 						</a>
 						<div class="plugin-card-top">
-							<h3><a href="<?php echo esc_url( $info['url'] ); ?>"><?php echo $info['name']; ?></a></h3>
+							<h3><a href="<?php echo esc_url( $info['url'] ); ?>"><?php echo esc_html( $info['name'] ); ?></a></h3>
 
 							<div class="desc column-description">
 								<?php echo $info['desc']; ?>
@@ -220,7 +220,7 @@ $free['terms-conditions'] = array(
 							<img src="<?php echo esc_attr( um_url . 'assets/img/extensions/' . $key . '.png'  ); ?>" alt="<?php echo esc_attr( $info['name'] ); ?>" />
 						</a>
 						<div class="plugin-card-top">
-							<h3><a href="<?php echo esc_url( $info['url'] ); ?>"><?php echo $info['name']; ?></a></h3>
+							<h3><a href="<?php echo esc_url( $info['url'] ); ?>"><?php echo esc_html( $info['name'] ); ?></a></h3>
 
 							<div class="desc column-description">
 								<?php echo $info['desc']; ?>

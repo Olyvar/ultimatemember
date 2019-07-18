@@ -2126,7 +2126,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 						?>
 
 						<tr class="um-settings-line">
-							<th><label for="um_options_<?php echo esc_attr( $field_data['id'] ); ?>"><?php echo $field_data['label'] ?></label></th>
+							<th><label for="um_options_<?php echo esc_attr( $field_data['id'] ); ?>"><?php echo esc_html( $field_data['label'] ); ?></label></th>
 							<td>
 								<form method="post" action="" name="um-settings-form" class="um-settings-form">
 									<input type="hidden" value="save" name="um-settings-action" />
@@ -2135,7 +2135,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 									<input type="hidden" name="__umnonce" value="<?php echo esc_attr( $um_settings_nonce ); ?>" />
 									<input type="text" id="um_options_<?php echo esc_attr( $field_data['id'] ); ?>" name="um_options[<?php echo esc_attr( $field_data['id'] ); ?>]" value="<?php echo esc_attr( $value ); ?>" class="um-option-field um-long-field" data-field_id="<?php echo esc_attr( $field_data['id'] ); ?>" />
 									<?php if ( ! empty( $field_data['description'] ) ) { ?>
-										<div class="description"><?php echo $field_data['description'] ?></div>
+										<div class="description"><?php echo $field_data['description']; ?></div>
 									<?php } ?>
 
 									<?php if ( ! empty( $value ) && ( ( is_object( $license ) && 'valid' == $license->license ) || 'valid' == $license ) ) { ?>
@@ -2149,7 +2149,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Settings' ) ) {
 									if ( ! empty( $messages ) ) {
 										foreach ( $messages as $message ) { ?>
 											<div class="edd-license-data edd-license-<?php echo esc_attr( $class . ' ' . $license_status ); ?>">
-												<p><?php echo $message ?></p>
+												<p><?php echo $message; ?></p>
 											</div>
 										<?php }
 									} ?>
@@ -2222,42 +2222,42 @@ do_action( 'um_install_info_before' ); ?>
 
 --- Site Info ---
 
-Site URL:					<?php echo site_url() . "\n"; ?>
-Home URL:					<?php echo home_url() . "\n"; ?>
-Multisite:					<?php echo is_multisite() ? 'Yes' . "\n" : 'No' . "\n" ?>
+Site URL:					<?php echo esc_html( site_url() . "\n" ); ?>
+Home URL:					<?php echo esc_html( home_url() . "\n" ); ?>
+Multisite:					<?php echo esc_html( is_multisite() ? 'Yes' . "\n" : 'No' . "\n" ); ?>
 
 --- Hosting Provider ---
 
 <?php if( $host ) : ?>
-Host:						<?php echo $host . "\n"; ?>
+Host:						<?php echo esc_html( $host . "\n" ); ?>
 <?php endif; ?>
 
 --- User Browser ---
 
-<?php echo $browser ; ?>
+<?php echo esc_html( $browser  ); ?>
 
 ---- Current User Details --
 
 <?php $user = wp_get_current_user(); ?>
-Role: <?php echo implode( ', ', um_user( 'roles' ) ). "\n"; ?>
+Role: <?php echo esc_html( implode( ', ', um_user( 'roles' ) ). "\n" ); ?>
 
 
 --- WordPress Configurations ---
 
-Version:						<?php echo get_bloginfo( 'version' ) . "\n"; ?>
-Language:					<?php echo get_locale()."\n"; ?>
-Permalink Structure:			<?php echo get_option( 'permalink_structure' ) . "\n"; ?>
-Active Theme:				<?php echo $theme . "\n"; ?>
+Version:						<?php echo esc_html( get_bloginfo( 'version' ) . "\n" ); ?>
+Language:					<?php echo esc_html( get_locale()."\n" ); ?>
+Permalink Structure:			<?php echo esc_html( get_option( 'permalink_structure' ) . "\n" ); ?>
+Active Theme:				<?php echo esc_html( $theme . "\n" ); ?>
 <?php $show_on_front = get_option( 'show_on_front' ); ?>
 <?php if( $show_on_front == "posts" ): ?>
-Show On Front:				<?php echo get_option( 'show_on_front' ) . "/static\n" ?>
+Show On Front:				<?php echo esc_html( get_option( 'show_on_front' ) . "/static\n" ); ?>
 <?php elseif( $show_on_front == "page" ): ?>
 Page On Front:				<?php $id = get_option( 'page_on_front' ); echo get_the_title( $id ) . ' (#' . $id . ')' . "\n" ?>
 Page For Posts:				<?php $id = get_option( 'page_for_posts' ); echo get_the_title( $id ) . ' (#' . $id . ')' . "\n" ?>
 <?php endif; ?>
-ABSPATH:					<?php echo ABSPATH."\n"; ?>
+ABSPATH:					<?php echo esc_html( ABSPATH."\n" ); ?>
 <?php $wp_count_posts = wp_count_posts(); ?>
-All Posts/Pages:				<?php echo array_sum((array)$wp_count_posts)."\n";?>
+All Posts/Pages:				<?php echo esc_html( array_sum((array)$wp_count_posts)."\n" );?>
 <?php
 $request['cmd'] = '_notify-validate';
 
@@ -2276,24 +2276,24 @@ $WP_REMOTE_POST =  'wp_remote_post() works' . "\n";
 $WP_REMOTE_POST =  'wp_remote_post() does not work' . "\n";
 }
 ?>
-WP Remote Post:           		<?php echo $WP_REMOTE_POST; ?>
-WP_DEBUG:                 			<?php echo defined( 'WP_DEBUG' ) ? WP_DEBUG ? 'Enabled' . "\n" : 'Disabled' . "\n" : 'Not set' . "\n" ?>
-WP Table Prefix:          			<?php echo "Length: ". strlen( $wpdb->prefix ); echo ", Status:"; if ( strlen( $wpdb->prefix )>16 ) {echo " ERROR: Too Long";} else {echo " Acceptable";} echo "\n"; ?>
-Memory Limit:   				<?php echo ( um_let_to_num( WP_MEMORY_LIMIT )/( 1024 ) )."MB"; ?><?php echo "\n"; ?>
+WP Remote Post:           		<?php echo esc_html( $WP_REMOTE_POST ); ?>
+WP_DEBUG:                 			<?php echo esc_html( defined( 'WP_DEBUG' ) ? WP_DEBUG ? 'Enabled' . "\n" : 'Disabled' . "\n" : 'Not set' . "\n" ); ?>
+WP Table Prefix:          			<?php echo esc_html( "Length: ". strlen( $wpdb->prefix ) . ", Status:" ); if ( strlen( $wpdb->prefix )>16 ) {echo " ERROR: Too Long";} else {echo " Acceptable";} echo "\n"; ?>
+Memory Limit:   				<?php echo esc_html( ( um_let_to_num( WP_MEMORY_LIMIT )/( 1024 ) )."MB" . "\n" ); ?>
 
 
 --- UM Configurations ---
 
-Version:						<?php echo ultimatemember_version . "\n"; ?>
-Upgraded From:            		<?php echo get_option( 'um_version_upgraded_from', 'None' ) . "\n"; ?>
-Current URL Method:			<?php echo UM()->options()->get( 'current_url_method' ). "\n"; ?>
+Version:						<?php echo esc_html( ultimatemember_version . "\n" ); ?>
+Upgraded From:            		<?php echo esc_html( get_option( 'um_version_upgraded_from', 'None' ) . "\n" ); ?>
+Current URL Method:			<?php echo esc_html( UM()->options()->get( 'current_url_method' ). "\n" ); ?>
 Cache User Profile:			<?php if( UM()->options()->get( 'um_profile_object_cache_stop' ) == 1 ){ echo "No"; }else{ echo "Yes"; } echo "\n"; ?>
 Generate Slugs on Directories:	<?php if( UM()->options()->get( 'um_generate_slug_in_directory' ) == 1 ){ echo "No"; }else{ echo "Yes"; } echo "\n"; ?>
 Rewrite Rules: 				<?php if( UM()->options()->get( 'um_flush_stop' ) == 1 ){ echo "No"; }else{ echo "Yes"; } echo "\n"; ?>
 Force UTF-8 Encoding: 		<?php if( UM()->options()->get( 'um_force_utf8_strings' ) == 1 ){ echo "Yes"; }else{ echo "No"; } echo "\n"; ?>
 JS/CSS Compression: 			<?php if ( defined('SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) { echo "Yes"; }else{ echo "No"; } echo "\n"; ?>
 <?php if( is_multisite() ): ?>
-    Network Structure:			<?php echo UM()->options()->get( 'network_permalink_structure' ). "\n"; ?>
+    Network Structure:			<?php echo esc_html( UM()->options()->get( 'network_permalink_structure' ). "\n" ); ?>
 <?php endif; ?>
 Port Forwarding in URL: 		<?php if( UM()->options()->get( 'um_port_forwarding_url' ) == 1 ){ echo "Yes"; }else{ echo "No"; } echo "\n"; ?>
 Exclude CSS/JS on Home: 		<?php if( UM()->options()->get( 'js_css_exlcude_home' ) == 1 ){ echo "Yes"; }else{ echo "No"; } echo "\n"; ?>
@@ -2320,13 +2320,13 @@ Exclude CSS/JS on Home: 		<?php if( UM()->options()->get( 'js_css_exlcude_home' 
  * ?>
  */
 do_action( "um_install_info_before_page_config" ); ?>
-User:						<?php echo get_permalink( UM()->options()->get('core_user') ) . "\n"; ?>
-Account:						<?php echo get_permalink( UM()->options()->get('core_account') ) . "\n"; ?>
-Members:					<?php echo get_permalink( UM()->options()->get('core_members') ) . "\n"; ?>
-Register:						<?php echo get_permalink( UM()->options()->get('core_register') ) . "\n"; ?>
-Login:						<?php echo get_permalink( UM()->options()->get('core_login') ) . "\n"; ?>
-Logout:						<?php echo get_permalink( UM()->options()->get('core_logout') ) . "\n"; ?>
-Password Reset:				<?php echo get_permalink( UM()->options()->get('core_password-reset') ) . "\n"; ?>
+User:						<?php echo esc_html( get_permalink( UM()->options()->get('core_user') ) . "\n" ); ?>
+Account:						<?php echo esc_html( get_permalink( UM()->options()->get('core_account') ) . "\n" ); ?>
+Members:					<?php echo esc_html( get_permalink( UM()->options()->get('core_members') ) . "\n" ); ?>
+Register:						<?php echo esc_html( get_permalink( UM()->options()->get('core_register') ) . "\n" ); ?>
+Login:						<?php echo esc_html( get_permalink( UM()->options()->get('core_login') ) . "\n" ); ?>
+Logout:						<?php echo esc_html( get_permalink( UM()->options()->get('core_logout') ) . "\n" ); ?>
+Password Reset:				<?php echo esc_html( get_permalink( UM()->options()->get('core_password-reset') ) . "\n" ); ?>
 <?php
 /**
  * UM hook
@@ -2350,16 +2350,16 @@ do_action( "um_install_info_after_page_config" ); ?>
 
 --- UM Users Configuration ---
 
-Default New User Role: 		<?php  echo UM()->options()->get('register_role') . "\n"; ?>
-Profile Permalink Base:		<?php  echo UM()->options()->get('permalink_base') . "\n"; ?>
-User Display Name:			<?php  echo UM()->options()->get('display_name') . "\n"; ?>
-Force Name to Uppercase:		<?php echo $this->info_value( UM()->options()->get('force_display_name_capitlized'), 'yesno', true ); ?>
-Redirect author to profile: 		<?php echo $this->info_value( UM()->options()->get('author_redirect'), 'yesno', true ); ?>
-Enable Members Directory:	<?php echo $this->info_value( UM()->options()->get('members_page'), 'yesno', true ); ?>
-Use Gravatars: 				<?php echo $this->info_value( UM()->options()->get('use_gravatars'), 'yesno', true ); ?>
-<?php if( UM()->options()->get('use_gravatars') ): ?>Gravatar builtin image:		<?php  echo UM()->options()->get('use_um_gravatar_default_builtin_image') . "\n"; ?>
-    UM Avatar as blank Gravatar: 	<?php echo $this->info_value( UM()->options()->get('use_um_gravatar_default_image'), 'yesno', true ); ?><?php endif; ?>
-Require a strong password: 	<?php echo $this->info_value( UM()->options()->get('reset_require_strongpass'), 'onoff', true ); ?>
+Default New User Role: 		<?php echo esc_html( UM()->options()->get('register_role') . "\n" ); ?>
+Profile Permalink Base:		<?php echo esc_html( UM()->options()->get('permalink_base') . "\n" ); ?>
+User Display Name:			<?php echo esc_html( UM()->options()->get('display_name') . "\n" ); ?>
+Force Name to Uppercase:		<?php echo esc_html( $this->info_value( UM()->options()->get('force_display_name_capitlized'), 'yesno', true ) ); ?>
+Redirect author to profile: 		<?php echo esc_html( $this->info_value( UM()->options()->get('author_redirect'), 'yesno', true ) ); ?>
+Enable Members Directory:	<?php echo esc_html( $this->info_value( UM()->options()->get('members_page'), 'yesno', true ) ); ?>
+Use Gravatars: 				<?php echo esc_html( $this->info_value( UM()->options()->get('use_gravatars'), 'yesno', true ) ); ?>
+<?php if( UM()->options()->get('use_gravatars') ): ?>Gravatar builtin image:		<?php echo esc_html( UM()->options()->get('use_um_gravatar_default_builtin_image') . "\n" ); ?>
+    UM Avatar as blank Gravatar: 	<?php echo esc_html( $this->info_value( UM()->options()->get('use_um_gravatar_default_image'), 'yesno', true ) ); ?><?php endif; ?>
+Require a strong password: 	<?php echo esc_html( $this->info_value( UM()->options()->get('reset_require_strongpass'), 'onoff', true ) ); ?>
 
 
 --- UM Access Configuration ---
@@ -2367,34 +2367,34 @@ Require a strong password: 	<?php echo $this->info_value( UM()->options()->get('
 Panic Key: 								<?php  echo UM()->options()->get('panic_key') . "\n"; ?>
 Global Site Access:						<?php  $arr = array('Site accessible to Everyone','','Site accessible to Logged In Users'); echo $arr[ intval( UM()->options()->get('accessible') ) ] . "\n"; ?>
 <?php if( UM()->options()->get('accessible') == 2 ) { ?>
-Custom Redirect URL:						<?php echo UM()->options()->get('access_redirect')."\n";?>
+Custom Redirect URL:						<?php echo esc_html( UM()->options()->get('access_redirect')."\n" );?>
 Exclude the following URLs:<?php echo esc_attr( "\t\t\t\t".implode("\t\n\t\t\t\t\t\t\t\t\t\t",UM()->options()->get('access_exclude_uris') )."\n" );?>
 <?php } ?>
-Backend Login Screen for Guests:			<?php echo $this->info_value( UM()->options()->get('wpadmin_login'), 'yesno', true ); ?>
+Backend Login Screen for Guests:			<?php echo esc_html( $this->info_value( UM()->options()->get('wpadmin_login'), 'yesno', true ) ); ?>
 <?php if( ! UM()->options()->get('wpadmin_login') ) { ?>
 Redirect to alternative login page:			<?php if( UM()->options()->get('wpadmin_login_redirect') == 'um_login_page' ){ echo um_get_core_page('login')."\n"; }else{ echo UM()->options()->get('wpadmin_login_redirect_url')."\n"; }?>
 <?php } ?>
-Backend Register Screen for Guests:		<?php echo $this->info_value( UM()->options()->get('wpadmin_register'), 'yesno', true ); ?>
+Backend Register Screen for Guests:		<?php echo esc_html( $this->info_value( UM()->options()->get('wpadmin_register'), 'yesno', true ) ); ?>
 <?php if( ! UM()->options()->get('wpadmin_register') ) { ?>
 Redirect to alternative register page:		<?php if( UM()->options()->get('wpadmin_register_redirect') == 'um_register_page' ){ echo um_get_core_page('register')."\n"; }else{ echo UM()->options()->get('wpadmin_register_redirect_url')."\n"; }?>
 <?php } ?>
-Access Control widget for Admins only: 		<?php echo $this->info_value( UM()->options()->get('access_widget_admin_only'), 'yesno', true ); ?>
-Enable the Reset Password Limit:			<?php echo $this->info_value( UM()->options()->get('enable_reset_password_limit'), 'yesno', true ); ?>
+Access Control widget for Admins only: 		<?php echo esc_html( $this->info_value( UM()->options()->get('access_widget_admin_only'), 'yesno', true ) ); ?>
+Enable the Reset Password Limit:			<?php echo esc_html( $this->info_value( UM()->options()->get('enable_reset_password_limit'), 'yesno', true ) ); ?>
 <?php if( UM()->options()->get('enable_reset_password_limit') ) { ?>
-Reset Password Limit: <?php echo UM()->options()->get('reset_password_limit_number') ?>
-Disable Reset Password Limit for Admins: <?php echo $this->info_value( UM()->options()->get('disable_admin_reset_password_limit'), 'yesno', true ) ?>
+Reset Password Limit: <?php echo esc_html( UM()->options()->get('reset_password_limit_number') ); ?>
+Disable Reset Password Limit for Admins: <?php echo esc_html( $this->info_value( UM()->options()->get('disable_admin_reset_password_limit'), 'yesno', true ) ); ?>
 <?php } ?>
 <?php $wpadmin_allow_ips = UM()->options()->get( 'wpadmin_allow_ips' ); if( ! empty( $wpadmin_allow_ips ) ) { ?>
-Whitelisted Backend IPs: 					<?php echo count( explode("\n",trim(UM()->options()->get('wpadmin_allow_ips') ) ) )."\n"; ?>
+Whitelisted Backend IPs: 					<?php echo esc_html( count( explode("\n",trim(UM()->options()->get('wpadmin_allow_ips') ) ) )."\n" ); ?>
 <?php } ?>
 <?php $blocked_ips = UM()->options()->get('blocked_ips'); if( ! empty( $blocked_ips ) ){ ?>
-Blocked IP Addresses: 					<?php echo  count( explode("\n",UM()->options()->get('blocked_ips') ) )."\n"; ?>
+Blocked IP Addresses: 					<?php echo esc_html(  count( explode("\n",UM()->options()->get('blocked_ips') ) )."\n" ); ?>
 <?php } ?>
 <?php $blocked_emails = UM()->options()->get('blocked_emails'); if( ! empty( $blocked_emails ) ){ ?>
-Blocked Email Addresses: 					<?php echo  count( explode("\n",UM()->options()->get('blocked_emails') ) )."\n"; ?>
+Blocked Email Addresses: 					<?php echo esc_html(  count( explode("\n",UM()->options()->get('blocked_emails') ) )."\n" ); ?>
 <?php } ?>
 <?php $blocked_words =  UM()->options()->get('blocked_words'); if( ! empty( $blocked_words ) ){ ?>
-Blacklist Words: 							<?php echo  count( explode("\n",UM()->options()->get('blocked_words') ) )."\n"; ?>
+Blacklist Words: 							<?php echo esc_html(  count( explode("\n",UM()->options()->get('blocked_words') ) )."\n" ); ?>
 <?php } ?>
 
 
@@ -2402,16 +2402,16 @@ Blacklist Words: 							<?php echo  count( explode("\n",UM()->options()->get('bl
 
 Mail appears from:  			<?php $mail_from = UM()->options()->get('mail_from'); if( ! empty( $mail_from ) ){echo UM()->options()->get('mail_from');}else{echo "-";}; echo "\n";?>
 Mail appears from address:  	<?php $mail_from_addr = UM()->options()->get('mail_from_addr'); if( ! empty( $mail_from_addr ) ){echo UM()->options()->get('mail_from_addr');}else{echo "-";}; echo "\n";?>
-Use HTML for E-mails:   		<?php echo $this->info_value( UM()->options()->get('email_html'), 'yesno', true ); ?>
-Account Welcome Email:  		<?php echo $this->info_value( UM()->options()->get('welcome_email_on'), 'yesno', true ); ?>
-Account Activation Email:   	<?php echo $this->info_value( UM()->options()->get('checkmail_email_on'), 'yesno', true ); ?>
-Pending Review Email:   		<?php echo $this->info_value( UM()->options()->get('pending_email_on'), 'yesno', true ); ?>
-Account Approved Email: 		<?php echo $this->info_value( UM()->options()->get('approved_email_on'), 'yesno', true ); ?>
-Account Rejected Email: 		<?php echo $this->info_value( UM()->options()->get('rejected_email_on'), 'yesno', true ); ?>
-Account Deactivated Email:  	<?php echo $this->info_value( UM()->options()->get('inactive_email_on'), 'yesno', true ); ?>
-Account Deleted Email:  		<?php echo $this->info_value( UM()->options()->get('deletion_email_on'), 'yesno', true ); ?>
-Password Reset Email:   		<?php echo $this->info_value( UM()->options()->get('resetpw_email_on'), 'yesno', true ); ?>
-Password Changed Email: 		<?php echo $this->info_value( UM()->options()->get('changedpw_email_on'), 'yesno', true ); ?>
+Use HTML for E-mails:   		<?php echo esc_html( $this->info_value( UM()->options()->get('email_html'), 'yesno', true ) ); ?>
+Account Welcome Email:  		<?php echo esc_html( $this->info_value( UM()->options()->get('welcome_email_on'), 'yesno', true ) ); ?>
+Account Activation Email:   	<?php echo esc_html( $this->info_value( UM()->options()->get('checkmail_email_on'), 'yesno', true ) ); ?>
+Pending Review Email:   		<?php echo esc_html( $this->info_value( UM()->options()->get('pending_email_on'), 'yesno', true ) ); ?>
+Account Approved Email: 		<?php echo esc_html( $this->info_value( UM()->options()->get('approved_email_on'), 'yesno', true ) ); ?>
+Account Rejected Email: 		<?php echo esc_html( $this->info_value( UM()->options()->get('rejected_email_on'), 'yesno', true ) ); ?>
+Account Deactivated Email:  	<?php echo esc_html( $this->info_value( UM()->options()->get('inactive_email_on'), 'yesno', true ) ); ?>
+Account Deleted Email:  		<?php echo esc_html( $this->info_value( UM()->options()->get('deletion_email_on'), 'yesno', true ) ); ?>
+Password Reset Email:   		<?php echo esc_html( $this->info_value( UM()->options()->get('resetpw_email_on'), 'yesno', true ) ); ?>
+Password Changed Email: 		<?php echo esc_html( $this->info_value( UM()->options()->get('changedpw_email_on'), 'yesno', true ) ); ?>
 
 
 --- UM Total Users ---
@@ -2464,43 +2464,43 @@ Password Changed Email: 		<?php echo $this->info_value( UM()->options()->get('ch
 
 --- Web Server Configurations ---
 
-PHP Version:              			<?php echo PHP_VERSION . "\n"; ?>
-MySQL Version:            			<?php echo $wpdb->db_version() . "\n"; ?>
-Web Server Info:          			<?php echo $_SERVER['SERVER_SOFTWARE'] . "\n"; ?>
+PHP Version:              			<?php echo esc_html( PHP_VERSION . "\n" ); ?>
+MySQL Version:            			<?php echo esc_html( $wpdb->db_version() . "\n" ); ?>
+Web Server Info:          			<?php echo esc_html( $_SERVER['SERVER_SOFTWARE'] . "\n" ); ?>
 
 
 --- PHP Configurations ---
 
-PHP Memory Limit:         			<?php echo ini_get( 'memory_limit' ) . "\n"; ?>
-PHP Upload Max Size:      			<?php echo ini_get( 'upload_max_filesize' ) . "\n"; ?>
-PHP Post Max Size:        			<?php echo ini_get( 'post_max_size' ) . "\n"; ?>
-PHP Upload Max Filesize:  			<?php echo ini_get( 'upload_max_filesize' ) . "\n"; ?>
-PHP Time Limit:           			<?php echo ini_get( 'max_execution_time' ) . "\n"; ?>
-PHP Max Input Vars:       			<?php echo ini_get( 'max_input_vars' ) . "\n"; ?>
-PHP Arg Separator:        			<?php echo ini_get( 'arg_separator.output' ) . "\n"; ?>
-PHP Allow URL File Open:  			<?php echo ini_get( 'allow_url_fopen' ) ? "Yes\n" : "No\n"; ?>
+PHP Memory Limit:         			<?php echo esc_html( ini_get( 'memory_limit' ) . "\n" ); ?>
+PHP Upload Max Size:      			<?php echo esc_html( ini_get( 'upload_max_filesize' ) . "\n" ); ?>
+PHP Post Max Size:        			<?php echo esc_html( ini_get( 'post_max_size' ) . "\n" ); ?>
+PHP Upload Max Filesize:  			<?php echo esc_html( ini_get( 'upload_max_filesize' ) . "\n" ); ?>
+PHP Time Limit:           			<?php echo esc_html( ini_get( 'max_execution_time' ) . "\n" ); ?>
+PHP Max Input Vars:       			<?php echo esc_html( ini_get( 'max_input_vars' ) . "\n" ); ?>
+PHP Arg Separator:        			<?php echo esc_html( ini_get( 'arg_separator.output' ) . "\n" ); ?>
+PHP Allow URL File Open:  			<?php echo esc_html( ini_get( 'allow_url_fopen' ) ? "Yes\n" : "No\n" ); ?>
 
 
 --- Web Server Extensions/Modules ---
 
-DISPLAY ERRORS:           			<?php echo ( ini_get( 'display_errors' ) ) ? 'On (' . ini_get( 'display_errors' ) . ')' : 'N/A'; ?><?php echo "\n"; ?>
-FSOCKOPEN:                			<?php echo ( function_exists( 'fsockopen' ) ) ? 'Your server supports fsockopen.' : 'Your server does not support fsockopen.'; ?><?php echo "\n"; ?>
-cURL:                     			<?php echo ( function_exists( 'curl_init' ) ) ? 'Your server supports cURL.' : 'Your server does not support cURL.'; ?><?php echo "\n"; ?>
-SOAP Client:              			<?php echo ( class_exists( 'SoapClient' ) ) ? 'Your server has the SOAP Client enabled.' : 'Your server does not have the SOAP Client enabled.'; ?><?php echo "\n"; ?>
-SUHOSIN:                  			<?php echo ( extension_loaded( 'suhosin' ) ) ? 'Your server has SUHOSIN installed.' : 'Your server does not have SUHOSIN installed.'; ?><?php echo "\n"; ?>
-GD Library:               			<?php echo ( extension_loaded( 'gd' ) && function_exists('gd_info') ) ? 'PHP GD library is installed on your web server.' : 'PHP GD library is NOT installed on your web server.'; ?><?php echo "\n"; ?>
-Mail:                     			<?php echo ( function_exists('mail') ) ? 'PHP mail function exist on your web server.' : 'PHP mail function doesn\'t exist on your web server.'; ?><?php echo "\n"; ?>
-Exif:				          <?php echo ( extension_loaded( 'exif' ) && function_exists('exif_imagetype') ) ? 'PHP Exif library is installed on your web server.' : 'PHP Exif library is NOT installed on your web server.'; ?><?php echo "\n"; ?>
+DISPLAY ERRORS:           			<?php echo esc_html( ( ini_get( 'display_errors' ) ) ? 'On (' . ini_get( 'display_errors' ) . ')' : 'N/A' ) . "\n"; ?>
+FSOCKOPEN:                			<?php echo esc_html( ( function_exists( 'fsockopen' ) ) ? 'Your server supports fsockopen.' : 'Your server does not support fsockopen.' ) . "\n"; ?>
+cURL:                     			<?php echo esc_html( ( function_exists( 'curl_init' ) ) ? 'Your server supports cURL.' : 'Your server does not support cURL.' ) . "\n"; ?>
+SOAP Client:              			<?php echo esc_html( ( class_exists( 'SoapClient' ) ) ? 'Your server has the SOAP Client enabled.' : 'Your server does not have the SOAP Client enabled.' ) . "\n"; ?>
+SUHOSIN:                  			<?php echo esc_html( ( extension_loaded( 'suhosin' ) ) ? 'Your server has SUHOSIN installed.' : 'Your server does not have SUHOSIN installed.' ) . "\n"; ?>
+GD Library:               			<?php echo esc_html( ( extension_loaded( 'gd' ) && function_exists('gd_info') ) ? 'PHP GD library is installed on your web server.' : 'PHP GD library is NOT installed on your web server.' ) . "\n"; ?>
+Mail:                     			<?php echo esc_html( ( function_exists('mail') ) ? 'PHP mail function exist on your web server.' : 'PHP mail function doesn\'t exist on your web server.' ) . "\n"; ?>
+Exif:				          <?php echo esc_html( ( extension_loaded( 'exif' ) && function_exists('exif_imagetype') ) ? 'PHP Exif library is installed on your web server.' : 'PHP Exif library is NOT installed on your web server.' ) . "\n"; ?>
 
 
 --- Session Configurations ---
 
-Session:                  			<?php echo isset( $_SESSION ) ? 'Enabled' : 'Disabled'; ?><?php echo "\n"; ?>
-Session Name:             			<?php echo esc_html( ini_get( 'session.name' ) ); ?><?php echo "\n"; ?>
-Cookie Path:              			<?php echo esc_html( ini_get( 'session.cookie_path' ) ); ?><?php echo "\n"; ?>
-Save Path:                			<?php echo esc_html( ini_get( 'session.save_path' ) ); ?><?php echo "\n"; ?>
-Use Cookies:              			<?php echo ini_get( 'session.use_cookies' ) ? 'On' : 'Off'; ?><?php echo "\n"; ?>
-Use Only Cookies:         			<?php echo ini_get( 'session.use_only_cookies' ) ? 'On' : 'Off'; ?><?php echo "\n"; ?>
+Session:                  			<?php echo esc_html( isset( $_SESSION ) ? 'Enabled' : 'Disabled' ) . "\n"; ?>
+Session Name:             			<?php echo esc_html( ini_get( 'session.name' ) ) . "\n"; ?>
+Cookie Path:              			<?php echo esc_html( ini_get( 'session.cookie_path' ) ) . "\n"; ?>
+Save Path:                			<?php echo esc_html( ini_get( 'session.save_path' ) ) . "\n"; ?>
+Use Cookies:              			<?php echo esc_html( ini_get( 'session.use_cookies' ) ? 'On' : 'Off' ) . "\n"; ?>
+Use Only Cookies:         			<?php echo esc_html( ini_get( 'session.use_only_cookies' ) ? 'On' : 'Off' ) . "\n"; ?>
 
 
 --- WordPress Active Plugins ---

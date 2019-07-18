@@ -29,7 +29,7 @@
 
 		<div class="um-profile-note">
 			<span>
-				<?php echo ( um_profile_id() == get_current_user_id() ) ? __( 'You have not created any posts.', 'ultimate-member' ) : __( 'This user has not created any posts.', 'ultimate-member' ); ?>
+				<?php echo esc_html( ( um_profile_id() == get_current_user_id() ) ? __( 'You have not created any posts.', 'ultimate-member' ) : __( 'This user has not created any posts.', 'ultimate-member' ) ); ?>
 			</span>
 		</div>
 

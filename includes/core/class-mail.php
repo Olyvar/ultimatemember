@@ -331,7 +331,7 @@ if ( ! class_exists( 'um\core\Mail' ) ) {
 				?>
 
 
-				<body <?php echo $body_attrs ?>>
+				<body <?php echo $body_attrs; ?>>
 
 				<?php echo $this->get_email_template( $slug, $args ); ?>
 

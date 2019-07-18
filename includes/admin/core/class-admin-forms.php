@@ -70,7 +70,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Forms' ) ) {
 
 			if ( empty( $this->form_data['without_wrapper'] ) ) { ?>
 
-				<table <?php echo $class_attr ?>>
+				<table <?php echo $class_attr; ?>>
 				<tbody>
 
 			<?php }
@@ -1062,7 +1062,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Forms' ) ) {
 
 			ob_start(); ?>
 
-			<div class="email_template_wrapper <?php echo $field_data['in_theme'] ? 'in_theme' : '' ?>" data-key="<?php echo esc_attr( $field_data['id'] ); ?>" style="position: relative;">
+			<div class="email_template_wrapper <?php echo esc_attr( $field_data['in_theme'] ? 'in_theme' : '' ); ?>" data-key="<?php echo esc_attr( $field_data['id'] ); ?>" style="position: relative;">
 
 				<?php wp_editor( $value,
 					$id,

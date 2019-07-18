@@ -732,7 +732,7 @@ if ( ! class_exists( 'um\core\Account' ) ) {
 
 				if ( ! empty ( $tab_data['with_header'] ) ) { ?>
 
-					<div class="um-account-heading uimob340-hide uimob500-hide"><i class="<?php echo esc_attr( $tab_data['icon'] ); ?>"></i><?php echo $tab_data['title']; ?></div>
+					<div class="um-account-heading uimob340-hide uimob500-hide"><i class="<?php echo esc_attr( $tab_data['icon'] ); ?>"></i><?php echo esc_html( $tab_data['title'] ); ?></div>
 
 				<?php }
 

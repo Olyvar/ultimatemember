@@ -148,7 +148,7 @@ $screen_id = $current_screen->id; ?>
 
 <div class="wrap">
 	<h2>
-		<?php echo ( 'add' == $_GET['tab'] ) ? __( 'Add New Role', 'ultimate-member' ) : __( 'Edit Role', 'ultimate-member' ) ?>
+		<?php echo esc_html( ( 'add' == $_GET['tab'] ) ? __( 'Add New Role', 'ultimate-member' ) : __( 'Edit Role', 'ultimate-member' ) ); ?>
 		<?php if ( 'edit' == $_GET['tab'] ) { ?>
 			<a class="add-new-h2" href="<?php echo esc_url( add_query_arg( array( 'page' => 'um_roles', 'tab' => 'add' ), admin_url( 'admin.php' ) ) ); ?>"><?php _e( 'Add New', 'ultimate-member' ) ?></a>
 		<?php } ?>
@@ -167,7 +167,7 @@ $screen_id = $current_screen->id; ?>
 
 	if ( ! empty( $error ) ) { ?>
 		<div id="message" class="error fade">
-			<p><?php echo $error ?></p>
+			<p><?php echo $error; ?></p>
 		</div>
 	<?php } ?>
 
@@ -190,7 +190,7 @@ $screen_id = $current_screen->id; ?>
 								<label for="title" class="screen-reader-text"><?php _e( 'Title', 'ultimate-member' ) ?></label>
 								<input type="text" name="role[name]" placeholder="<?php esc_attr_e( 'Enter Title Here', 'ultimate-member' ) ?>" id="title" value="<?php echo esc_attr( isset( $data['name'] ) ? $data['name'] : '' ); ?>" />
 							<?php } else { ?>
-								<span style="float: left;width:100%;"><?php echo isset( $data['name'] ) ? $data['name'] : '' ?></span>
+								<span style="float: left;width:100%;"><?php echo esc_html( isset( $data['name'] ) ? $data['name'] : '' ); ?></span>
 							<?php } ?>
 						</div>
 					</div>

@@ -50,7 +50,7 @@ function um_members_directory_search( $args ) {
 		$count = count( $search_filters ); ?>
 
 		<div class="um-search um-search-<?php echo esc_attr( $count ); ?>">
-			
+
 			<form method="get" action="">
 
 				<?php if ( isset( $_REQUEST['page_id'] ) && get_option('permalink_structure') == 0 ) { ?>
@@ -69,7 +69,7 @@ function um_members_directory_search( $args ) {
 						$add_class = '';
 					} ?>
 
-					<div class="um-search-filter <?php echo $add_class ?>">
+					<div class="um-search-filter <?php echo esc_attr( $add_class ); ?>">
 						<?php UM()->members()->show_filter( $filter ); ?>
 					</div>
 				<?php } ?>
@@ -186,10 +186,10 @@ function um_members_directory_pagination( $args ) {
 				<?php foreach( um_members('pages_to_show') as $i ) { ?>
 
 					<?php if ( um_members('page') == $i ) { ?>
-                        <span class="pagi current"><?php echo $i; ?></span>
+                        <span class="pagi current"><?php echo esc_html( $i ); ?></span>
 					<?php } else { ?>
 
-                        <a href="<?php echo esc_url( UM()->permalinks()->add_query( 'members_page', $i ) ); ?>" class="pagi"><?php echo $i; ?></a>
+                        <a href="<?php echo esc_url( UM()->permalinks()->add_query( 'members_page', $i ) ); ?>" class="pagi"><?php echo esc_html( $i ); ?></a>
 
 					<?php } ?>
 
@@ -234,7 +234,7 @@ function um_members_directory_display( $args ) {
 		?>
 
         <div class="um-members-none">
-            <p><?php echo $args['no_users']; ?></p>
+            <p><?php echo esc_html( $args['no_users'] ); ?></p>
         </div>
 
 		<?php

@@ -89,7 +89,7 @@ if ( ! class_exists( 'um\core\Chart' ) ) {
 					var min_data = 0;
 					var max_data = data.getColumnRange(1).max;
 
-					var vgrid_count = <?php echo $vertical_max_lines; ?>;
+					var vgrid_count = <?php echo esc_attr( $vertical_max_lines ); ?>;
 					var hgrid_count = Math.floor( data.getNumberOfRows() / 4 );
 
 					/* Options */

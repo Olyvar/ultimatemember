@@ -1094,9 +1094,9 @@ if ( ! class_exists( 'um\admin\core\Admin_Metabox' ) ) {
 						$mode = UM()->query()->get_attr( 'mode', $post_id );
 						if ( ! empty( $mode ) ) {
 							$posts = $wpdb->get_col(
-								"SELECT post_id 
-								FROM {$wpdb->postmeta} 
-								WHERE meta_key = '_um_mode' AND 
+								"SELECT post_id
+								FROM {$wpdb->postmeta}
+								WHERE meta_key = '_um_mode' AND
 									  meta_value = 'directory'"
 							);
 							foreach ( $posts as $p_id ) {
@@ -1144,9 +1144,9 @@ if ( ! class_exists( 'um\admin\core\Admin_Metabox' ) ) {
 						$mode = UM()->query()->get_attr( 'mode', $post_id );
 						if ( ! empty( $mode ) ) {
 							$posts = $wpdb->get_col( $wpdb->prepare(
-								"SELECT post_id 
-								FROM {$wpdb->postmeta} 
-								WHERE meta_key = '_um_mode' AND 
+								"SELECT post_id
+								FROM {$wpdb->postmeta}
+								WHERE meta_key = '_um_mode' AND
 									  meta_value = %s",
 								$mode
 							) );
@@ -1264,7 +1264,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Metabox' ) ) {
 						foreach( $actions as $action ) {
 							?>
 
-							<option value="<?php echo esc_attr( $action ); ?>" <?php selected( $action, $this->edit_mode_value ); ?>><?php echo $action; ?></option>
+							<option value="<?php echo esc_attr( $action ); ?>" <?php selected( $action, $this->edit_mode_value ); ?>><?php echo esc_html( $action ); ?></option>
 
 						<?php } ?>
 
@@ -1294,7 +1294,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Metabox' ) ) {
 							if ( isset( $array['title'] ) &&
 							     ( ! isset( $this->edit_array['metakey'] ) || $key != $this->edit_array['metakey'] ) ) { ?>
 
-								<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, $this->edit_mode_value ) ?>><?php echo $array['title'] ?></option>
+								<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, $this->edit_mode_value ) ?>><?php echo esc_html( $array['title'] ); ?></option>
 
 							<?php }
 						} ?>
@@ -1329,7 +1329,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Metabox' ) ) {
 
 						foreach ( $operators as $operator ) { ?>
 
-							<option value="<?php echo esc_attr( $operator ); ?>" <?php selected( $operator, $this->edit_mode_value ); ?>><?php echo $operator; ?></option>
+							<option value="<?php echo esc_attr( $operator ); ?>" <?php selected( $operator, $this->edit_mode_value ); ?>><?php echo esc_html( $operator ); ?></option>
 
 						<?php } ?>
 
@@ -1388,7 +1388,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Metabox' ) ) {
 								 */
 								$continue = apply_filters( "um_builtin_validation_types_continue_loop", true, $key, $form_id, $field_args );
 								if ( $continue ) { ?>
-									<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, $this->edit_mode_value ); ?>><?php echo $name; ?></option>
+									<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, $this->edit_mode_value ); ?>><?php echo esc_html( $name ); ?></option>
 								<?php } ?>
 							<?php } ?>
 
@@ -1732,10 +1732,10 @@ if ( ! class_exists( 'um\admin\core\Admin_Metabox' ) ) {
 
 						<p><label for="_format">Date User-Friendly Format <?php UM()->tooltip( __( 'The display format of the date which is visible to user.', 'ultimate-member' ) ); ?></label>
 							<select name="_format" id="_format" style="width: 100%">
-								<option value="j M Y" <?php selected( 'j M Y', $this->edit_mode_value ); ?>><?php echo UM()->datetime()->get_time('j M Y'); ?></option>
-								<option value="M j Y" <?php selected( 'M j Y', $this->edit_mode_value ); ?>><?php echo UM()->datetime()->get_time('M j Y'); ?></option>
-								<option value="j F Y" <?php selected( 'j F Y', $this->edit_mode_value ); ?>><?php echo UM()->datetime()->get_time('j F Y'); ?></option>
-								<option value="F j Y" <?php selected( 'F j Y', $this->edit_mode_value ); ?>><?php echo UM()->datetime()->get_time('F j Y'); ?></option>
+								<option value="j M Y" <?php selected( 'j M Y', $this->edit_mode_value ); ?>><?php echo esc_html( UM()->datetime()->get_time('j M Y') ); ?></option>
+								<option value="M j Y" <?php selected( 'M j Y', $this->edit_mode_value ); ?>><?php echo esc_html( UM()->datetime()->get_time('M j Y') ); ?></option>
+								<option value="j F Y" <?php selected( 'j F Y', $this->edit_mode_value ); ?>><?php echo esc_html( UM()->datetime()->get_time('j F Y') ); ?></option>
+								<option value="F j Y" <?php selected( 'F j Y', $this->edit_mode_value ); ?>><?php echo esc_html( UM()->datetime()->get_time('F j Y') ); ?></option>
 							</select>
 						</p>
 
@@ -1743,9 +1743,9 @@ if ( ! class_exists( 'um\admin\core\Admin_Metabox' ) ) {
 
 						<p><label for="_format">Time Format <?php UM()->tooltip( __( 'Choose the displayed time-format for this field', 'ultimate-member' ) ); ?></label>
 							<select name="_format" id="_format" style="width: 100%">
-								<option value="g:i a" <?php selected( 'g:i a', $this->edit_mode_value ); ?>><?php echo UM()->datetime()->get_time('g:i a'); ?> ( 12-hr format )</option>
-								<option value="g:i A" <?php selected( 'g:i A', $this->edit_mode_value ); ?>><?php echo UM()->datetime()->get_time('g:i A'); ?> ( 12-hr format )</option>
-								<option value="H:i"  <?php selected( 'H:i', $this->edit_mode_value ); ?>><?php echo UM()->datetime()->get_time('H:i'); ?> ( 24-hr format )</option>
+								<option value="g:i a" <?php selected( 'g:i a', $this->edit_mode_value ); ?>><?php echo esc_html( UM()->datetime()->get_time('g:i a') ); ?> ( 12-hr format )</option>
+								<option value="g:i A" <?php selected( 'g:i A', $this->edit_mode_value ); ?>><?php echo esc_html( UM()->datetime()->get_time('g:i A') ); ?> ( 12-hr format )</option>
+								<option value="H:i"  <?php selected( 'H:i', $this->edit_mode_value ); ?>><?php echo esc_html( UM()->datetime()->get_time('H:i') ); ?> ( 24-hr format )</option>
 							</select>
 						</p>
 
@@ -1901,7 +1901,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Metabox' ) ) {
 						<p><label for="_allowed_types">Allowed Image Types <?php UM()->tooltip( __( 'Select the image types that you want to allow to be uploaded via this field.', 'ultimate-member' ) ); ?></label>
 							<select name="_allowed_types[]" id="_allowed_types" multiple="multiple" style="width: 100%">
 								<?php foreach( UM()->files()->allowed_image_types() as $e => $n ) { ?>
-									<option value="<?php echo esc_attr( $e ); ?>" <?php if ( in_array( $e, $values ) ) { echo 'selected'; } ?>><?php echo $n; ?></option>
+									<option value="<?php echo esc_attr( $e ); ?>" <?php if ( in_array( $e, $values ) ) { echo 'selected'; } ?>><?php echo esc_html( $n ); ?></option>
 								<?php } ?>
 							</select>
 						</p>
@@ -1921,7 +1921,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Metabox' ) ) {
 						<p><label for="_allowed_types">Allowed File Types <?php UM()->tooltip( __( 'Select the image types that you want to allow to be uploaded via this field.', 'ultimate-member' ) ); ?></label>
 							<select name="_allowed_types[]" id="_allowed_types" multiple="multiple" style="width: 100%">
 								<?php foreach( UM()->files()->allowed_file_types() as $e => $n ) { ?>
-									<option value="<?php echo esc_attr( $e ); ?>" <?php if ( in_array( $e, $values ) ) { echo 'selected'; } ?>><?php echo $n; ?></option>
+									<option value="<?php echo esc_attr( $e ); ?>" <?php if ( in_array( $e, $values ) ) { echo 'selected'; } ?>><?php echo esc_html( $n ); ?></option>
 								<?php } ?>
 							</select>
 						</p>
@@ -2109,7 +2109,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Metabox' ) ) {
 					?>
 
 					<p><label for="_options">Edit Choices <?php UM()->tooltip( __( 'Enter one choice per line. This will represent the available choices or selections available for user.', 'ultimate-member' ) ); ?></label>
-						<textarea name="_options" id="_options"><?php echo $values; ?></textarea>
+						<textarea name="_options" id="_options"><?php echo esc_html( $values ); ?></textarea>
 					</p>
 
 					<?php
@@ -2258,7 +2258,7 @@ if ( ! class_exists( 'um\admin\core\Admin_Metabox' ) ) {
 
 							<?php foreach( UM()->roles()->get_roles() as $key => $value) { ?>
 
-								<option value="<?php echo esc_attr( $key ); ?>" <?php if ( in_array( $key, $values ) ) { echo 'selected'; } ?>><?php echo $value; ?></option>
+								<option value="<?php echo esc_attr( $key ); ?>" <?php if ( in_array( $key, $values ) ) { echo 'selected'; } ?>><?php echo esc_html( $value ); ?></option>
 
 							<?php } ?>
 

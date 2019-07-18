@@ -195,8 +195,8 @@ if ( ! class_exists( 'um\admin\core\Admin_Notices' ) ) {
 
 			ob_start(); ?>
 
-			<div class="<?php echo esc_attr( $class ); ?> um-admin-notice notice <?php echo $dismissible ? 'is-dismissible' : '' ?>" data-key="<?php echo esc_attr( $key ); ?>">
-				<?php echo ! empty( $notice_data['message'] ) ? $notice_data['message'] : '' ?>
+			<div class="<?php echo esc_attr( $class ); ?> um-admin-notice notice <?php echo esc_attr( $dismissible ? 'is-dismissible' : '' ); ?>" data-key="<?php echo esc_attr( $key ); ?>">
+				<?php echo ! empty( $notice_data['message'] ) ? $notice_data['message'] : ''; ?>
 			</div>
 
 			<?php $notice = ob_get_clean();
